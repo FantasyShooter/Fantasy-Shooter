@@ -1,4 +1,6 @@
-package com.example.fantasyshooter;
+package com.fshoot.main;
+
+import com.example.fantasyshooter.R;
 
 import android.os.Bundle;
 import android.app.Activity;
