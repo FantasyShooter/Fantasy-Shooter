@@ -4,5 +4,8 @@
     <string name="app_name">Fantasy Shooter</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="text_view">buying something</string>
+    <string name="button_text">item1</string>
+    <string name="button_text2">return to menu</string>
 
 </resources>
