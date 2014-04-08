@@ -6,6 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="text_view">buying something</string>
     <string name="button_text">item1</string>
-    <string name="button_text2">return to menua</string>
+
 
 </resources>
