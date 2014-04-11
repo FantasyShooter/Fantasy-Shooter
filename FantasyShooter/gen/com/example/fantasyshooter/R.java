@@ -21,10 +21,22 @@ public final class R {
         public static final int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int bigm=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int middlem=0x7f020002;
-        public static final int smallm=0x7f020003;
+        public static final int battle=0x7f020000;
+        public static final int bigm=0x7f020001;
+        public static final int boss=0x7f020002;
+        public static final int fhero=0x7f020003;
+        public static final int fire_graphic=0x7f020004;
+        public static final int gun=0x7f020005;
+        public static final int hero_new=0x7f020006;
+        public static final int ic_launcher=0x7f020007;
+        public static final int icon_coin=0x7f020008;
+        public static final int mhero=0x7f020009;
+        public static final int middle=0x7f02000a;
+        public static final int middlem=0x7f02000b;
+        public static final int reload=0x7f02000c;
+        public static final int small=0x7f02000d;
+        public static final int smallm=0x7f02000e;
+        public static final int town=0x7f02000f;
     }
     public static final class id {
         public static final int abutton=0x7f080001;
