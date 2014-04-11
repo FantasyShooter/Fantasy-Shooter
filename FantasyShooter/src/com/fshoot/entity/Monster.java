@@ -1,11 +1,13 @@
 package com.fshoot.entity;
 
+import android.view.View;
+
 public class Monster {
 
 	protected int hp;
 	protected int atk;
 	protected int speed;
-
+	protected View imageView;
 	
 	public int getHp() {
 		return hp;

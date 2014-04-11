@@ -7,12 +7,13 @@ import com.fshoot.framepage.FramePage;
 
 import android.app.Application;
 
-// To get from memory, use -> MyApp myapp = (MyApp) activity.getApplicationContext();
+// To get status memory, use -> MyApp myapp = (MyApp) activity.getApplicationContext();
 public class MyApp extends Application {
 
 	private Player player;
 	private LinkedList<FramePage> screenList = new LinkedList<FramePage>();
-
+	private int day;
+	
 	public LinkedList<FramePage> getScreenList() {
 		return screenList;
 	}
@@ -21,12 +22,20 @@ public class MyApp extends Application {
 		this.screenList = screenList;
 	}
 
-	public Player getUser() {
+	// Getter and Setter
+	public Player getPlayer() {
 		return player;
 	}
 
-	public void setUser(Player player) {
+	public void setPlayer(Player player) {
 		this.player = player;
 	}
 
+	public int getDay() {
+		return day;
+	}
+
+	public void setDay(int day) {
+		this.day = day;
+	}
 }

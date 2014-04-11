@@ -24,4 +24,8 @@ public class MainActivity extends Activity {
 //		return true;
 //	}
 
+	@Override
+	public void onBackPressed() {
+		// Change back button to pause game or quit game or save game
+	}
 }

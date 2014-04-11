@@ -23,6 +23,10 @@ public class BattlePage implements FramePage {
 		// 2. setup event listener
 		
 		// 3. event start when created
+		startGame();
 	}
 
+	public void startGame(){
+		
+	}
 }
