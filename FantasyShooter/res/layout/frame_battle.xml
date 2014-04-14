@@ -1,8 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/battleRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/battleRoot" >
+    android:orientation="vertical" >
 
-</LinearLayout>
+    <!-- The first row is W:match_parent H:300px -->
+
+    <RelativeLayout
+        android:id="@+id/topRoot"
+        android:layout_width="match_parent"
+        android:layout_height="300px" >
+
+        <!-- <Button
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Button1" /> -->
+    </RelativeLayout>
+
+    <!-- The second row is "280px" H:468px  ,   915px, 468px -->
+
+    <RelativeLayout
+        android:id="@+id/leftRoot"
+        android:layout_width="280px"
+        android:layout_height="468px"
+        android:layout_below="@+id/topRoot" >
+
+<!--         <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Button2" /> -->
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rightRoot"
+        android:layout_width="915px"
+        android:layout_height="468px"
+        android:layout_below="@+id/topRoot"
+        android:layout_toRightOf="@+id/leftRoot" >
+
+<!--         <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Button3" /> -->
+            
+    </RelativeLayout>
+
+</RelativeLayout>

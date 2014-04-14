@@ -8,6 +8,7 @@ public class Monster {
 	protected int atk;
 	protected int speed;
 	protected View imageView;
+	protected static int rowY[] = {156,312,468};
 	
 	public int getHp() {
 		return hp;
