@@ -4,7 +4,9 @@ import com.example.fantasyshooter.R;
 import com.fshoot.main.MyApp;
 
 import android.app.Activity;
+import android.graphics.Point;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -44,8 +46,17 @@ public class SmallM extends Monster {
 		// Add to battle view
 		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(100,100);
 		LinearLayout rl = (LinearLayout) activity.findViewById(R.id.battleRoot);
-		lp.setMargins(0, 0, 0, 0);
-		//lp.setMargins(rl.getWidth()-lp.width, (rl.getHeight()-lp.height)/2, 0, 0);
+		//lp.setMargins(0, 0, 0, 0);
+		Display display = activity.getWindowManager().getDefaultDisplay();
+		Point size = new Point();
+		display.getSize(size);
+		int width = size.x;
+		int height = size.y;
+		
+		Log.d("width",""+width);
+		Log.d("height",""+height);
+
+		lp.setMargins(width-lp.width, (height-lp.height)/2, 0, 0);
 		rl.addView(im, lp);
 	}
 
