@@ -1,6 +1,7 @@
 package com.fshoot.framepage;
 
 import com.example.fantasyshooter.R;
+import com.fshoot.entity.SmallM;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -27,6 +28,6 @@ public class BattlePage implements FramePage {
 	}
 
 	public void startGame(){
-		
+		new SmallM().create(activity);
 	}
 }
