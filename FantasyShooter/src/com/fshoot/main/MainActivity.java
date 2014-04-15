@@ -31,10 +31,10 @@ public class MainActivity extends Activity {
 		((MyApp) getApplicationContext()).setPlayer(player);
 		
 		// Get
-		ArrayList<Player> player_list = db.get_Players();
-		for(int i=0;i<player_list.size();i++){
-			Log.d("debug",player_list.get(i).getNick_name());
-		}
+//		ArrayList<Player> player_list = db.get_Players();
+//		for(int i=0;i<player_list.size();i++){
+//			Log.d("debug",player_list.get(i).getNick_name());
+//		}
 		
 		
 		// Create the main menu here

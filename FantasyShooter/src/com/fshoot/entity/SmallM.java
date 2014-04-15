@@ -4,13 +4,17 @@ import com.example.fantasyshooter.R;
 import com.fshoot.main.MyApp;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-public class SmallM extends Monster {
+public class SmallM implements Monster {
 
+	private int hp;
+	private int atk;
+	private int speed;
 	private ImageView image;
 
 	public SmallM() {
@@ -20,6 +24,7 @@ public class SmallM extends Monster {
 	}
 
 	public void create(Activity activity) {
+		Log.d("debug","SmallM.create()");
 		// Create a monster image
 		ImageView im = new ImageView(activity);
 		im.setImageResource(R.drawable.small);
@@ -37,19 +42,23 @@ public class SmallM extends Monster {
 		int w = rl.getLayoutParams().width;
 		//int h = rl.getLayoutParams().height;
 		
-		int random = (int) Math.random()*3;
+		int random = (int) (Math.random()*3);
+		
 		// Random pop up at a line
 		lp.setMargins(w - lp.width, Monster.rowY[random]-lp.height, 0, 0);
 		rl.addView(im, lp);
+		Log.d("debug","under RightRoot:"+rl.getChildCount());
 	}
 
 	public void deductHP(Activity activity) {
+		Log.d("Debug","deductHP()");
 		MyApp myapp = ((MyApp) activity.getApplicationContext());
 
 		int totalAtk = myapp.getPlayer().getTotalAtk();
 		hp -= totalAtk;
 		// if hp is lower then 1, delete this
 		if (hp <= 0) {
+			Log.d("Debug","HP <0 kill");
 			RelativeLayout rl = (RelativeLayout) activity.findViewById(R.id.rightRoot);
 			rl.removeView(image);
 		}
