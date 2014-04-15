@@ -23,6 +23,16 @@ public class Level {
 		return result;
 	}
 	
+	public void deductSmallM(){
+		num_of_smallM--;
+	}
+	public void deductMiddleM(){
+		num_of_middleM--;
+	}
+	public void deductBigM(){
+		num_of_middleM--;
+	}
+	
 	// Getter and Setter
 	public int getNum_of_smallM() {
 		return num_of_smallM;
