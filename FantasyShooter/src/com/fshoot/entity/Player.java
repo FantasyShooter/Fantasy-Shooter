@@ -14,20 +14,33 @@ public class Player {
 
 	}
 
-	public int getId() {
-		return id;
+	public Player(String nick_name) {
+		super();
+		this.nick_name = nick_name;
 	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
+	
 	public Player(int id, String nick_name, int score, int survival_day) {
 		super();
 		this.id = id;
 		this.nick_name = nick_name;
 		this.score = score;
 		this.survival_day = survival_day;
+	}
+	
+	public void initialPlayer(){
+		atk = 50;
+		hp = 100;
+		weapon = new Weapon(50);
+		score = 0;
+		survival_day = 0;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getTotalAtk() {

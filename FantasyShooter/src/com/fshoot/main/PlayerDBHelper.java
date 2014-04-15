@@ -14,7 +14,7 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
 
 	// All Static variables
 	// Database Version
-	private static final int DATABASE_VERSION = 1;
+	private static final int DATABASE_VERSION = 2;
 
 	// Database Name
 	private static final String DATABASE_NAME = "FANSTASYSHOOTER";
@@ -49,7 +49,7 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
 	public void createTablePlayerIfNotExists(SQLiteDatabase db) {
 		
 		String CREATE_UserS_TABLE = "CREATE TABLE IF NOT EXISTS "
-				+ TABLE_PLAYER_SCORE + "(" + KEY_ID + " INTEGER,"
+				+ TABLE_PLAYER_SCORE + "(" + KEY_ID + " INTEGER PRIMARY KEY,"
 				+ KEY_NICK_NAME + " TEXT, " + KEY_SCORE + " INTEGER, "
 				+ KEY_SURVIVAL_DAY + " INTEGER" + ")";
 		Log.d("Debug", CREATE_UserS_TABLE);
@@ -62,7 +62,7 @@ public class PlayerDBHelper extends SQLiteOpenHelper {
 	// Adding new Player
 	public void add_Player(Player player) {
 		SQLiteDatabase db = this.getWritableDatabase();
-		String sql = "Insert into " + TABLE_PLAYER_SCORE + " VALUES ('"
+		String sql = "Insert into " + TABLE_PLAYER_SCORE + " VALUES (null,'"
 				+ player.getNick_name() + "', " + player.getScore() + ", "
 				+ player.getSurvival_day() + ")";
 		Log.d("Debug", sql);

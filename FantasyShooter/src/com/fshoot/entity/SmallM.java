@@ -1,8 +1,5 @@
 package com.fshoot.entity;
 
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-
 import com.example.fantasyshooter.R;
 import com.fshoot.main.MyApp;
 
@@ -15,8 +12,6 @@ import android.widget.RelativeLayout;
 public class SmallM extends Monster {
 
 	private ImageView image;
-	static Lock lock = new ReentrantLock();
-
 
 	public SmallM() {
 		hp = 100;
@@ -31,16 +26,7 @@ public class SmallM extends Monster {
 		im.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Activity activity = (Activity) v.getContext();
-				MyApp myapp = ((MyApp) activity.getApplicationContext());
-
-				int totalAtk = myapp.getPlayer().getTotalAtk();
-				hp -= totalAtk;
-				// if hp is lower then 1, delete this
-				if (hp <= 0) {
-					RelativeLayout rl = (RelativeLayout) activity.findViewById(R.id.rightRoot);
-					rl.removeView(image);
-				}
+				deductHP((Activity) v.getContext());
 			}
 		});
 		// Backup
@@ -49,7 +35,7 @@ public class SmallM extends Monster {
 		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(100, 100);
 		RelativeLayout rl = (RelativeLayout) activity.findViewById(R.id.rightRoot);
 		int w = rl.getLayoutParams().width;
-		int h = rl.getLayoutParams().height;
+		//int h = rl.getLayoutParams().height;
 		
 		int random = (int) Math.random()*3;
 		// Random pop up at a line
@@ -57,17 +43,20 @@ public class SmallM extends Monster {
 		rl.addView(im, lp);
 	}
 
-	public void deductHP(int totalATK) {
-		lock.lock(); // Acquire the lock
+	public void deductHP(Activity activity) {
+		MyApp myapp = ((MyApp) activity.getApplicationContext());
 
-		try {
-			hp -= totalATK;
-			// Update the hp ui
-		} catch (Exception ex) { // optional catch block
-			
-		} finally {
-			lock.unlock(); // Release the lock
+		int totalAtk = myapp.getPlayer().getTotalAtk();
+		hp -= totalAtk;
+		// if hp is lower then 1, delete this
+		if (hp <= 0) {
+			RelativeLayout rl = (RelativeLayout) activity.findViewById(R.id.rightRoot);
+			rl.removeView(image);
 		}
+	}
+	
+	public void startMove(){
+		
 	}
 
 }
