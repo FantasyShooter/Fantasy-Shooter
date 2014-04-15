@@ -32,8 +32,9 @@ public final class R {
         public static final int mhero=0x7f020008;
         public static final int middle=0x7f020009;
         public static final int reload=0x7f02000a;
-        public static final int small=0x7f02000b;
-        public static final int town=0x7f02000c;
+        public static final int sky=0x7f02000b;
+        public static final int small=0x7f02000c;
+        public static final int town=0x7f02000d;
     }
     public static final class id {
         public static final int ImageView1=0x7f080008;
