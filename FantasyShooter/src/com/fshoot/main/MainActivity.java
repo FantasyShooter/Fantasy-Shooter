@@ -1,7 +1,7 @@
 package com.fshoot.main;
 
 import com.example.fantasyshooter.R;
-import com.fshoot.framepage.TownPage;
+import com.fshoot.entity.Player;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -16,8 +16,12 @@ public class MainActivity extends Activity {
 		new PlayerDBHelper(this);
 		
 		// Create the main menu here
-		new TownPage().show(this);
+		//new TownPage().show(this);
 		//new BattlePage().show(this);
+		PlayerDBHelper db = new PlayerDBHelper(this);
+		db.createTablePlayerIfNotExists(db.getWritableDatabase());
+		
+		db.add_Player(new Player());
 	}
 
 //	@Override

@@ -39,8 +39,8 @@ public final class R {
         public static final int town=0x7f02000f;
     }
     public static final class id {
-        public static final int Button1=0x7f08000b;
-        public static final int Button2=0x7f08000d;
+        public static final int Button1=0x7f08000d;
+        public static final int Button2=0x7f08000b;
         public static final int Button3=0x7f08000c;
         public static final int ImageView1=0x7f08000a;
         public static final int abutton=0x7f080001;
