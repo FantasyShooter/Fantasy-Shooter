@@ -1,7 +1,6 @@
 package com.fshoot.main;
 
 import com.example.fantasyshooter.R;
-import com.fshoot.framepage.BattlePage;
 import com.fshoot.framepage.MenuPage;
 
 import android.os.Bundle;
@@ -15,8 +14,8 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		// Create the main menu here
-		//new MenuPage().show(this);
-		new BattlePage().show(this);
+		new MenuPage().show(this);
+		//new BattlePage().show(this);
 	}
 
 //	@Override
