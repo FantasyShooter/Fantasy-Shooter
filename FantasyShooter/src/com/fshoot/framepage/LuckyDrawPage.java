@@ -25,7 +25,7 @@ public class LuckyDrawPage implements FramePage{
 		// Remove the old one
 		frame.removeAllViewsInLayout();
 		// Show a new screen
-		LayoutInflater.from(activity).inflate(R.layout.frame_start, frame,true);
+		LayoutInflater.from(activity).inflate(R.layout.frame_luckydraw, frame,true);
 		
 		// 2. setup event listener
 		
@@ -48,10 +48,11 @@ public class LuckyDrawPage implements FramePage{
 						hp = hp+20;
 						// set back the player
 						player.setHp(hp);
+						myapp.setPlayer(player);
 						// Show dialogue for choose
 						myAlertDialog = new AlertDialog.Builder(activity);
 						myAlertDialog.setTitle("Information");
-						myAlertDialog.setMessage("Your Hp have been added"+player.getHp()+20);
+						myAlertDialog.setMessage(" Hp added "+player.getHp());
 						DialogInterface.OnClickListener doneClick = new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
 							dialog.dismiss();
@@ -68,10 +69,11 @@ public class LuckyDrawPage implements FramePage{
 					    atk = atk+20;
 						// set back the player
 						player.setAtk(atk);
+						myapp.setPlayer(player);
 						// Show dialogue for choose
 						myAlertDialog = new AlertDialog.Builder(activity);
 						myAlertDialog.setTitle("Information");
-						myAlertDialog.setMessage("Your attack have been added"+player.getAtk()+20);
+						myAlertDialog.setMessage(" Attack added "+player.getAtk());
 						DialogInterface.OnClickListener doneClick2 = new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
 							dialog.dismiss();
@@ -84,14 +86,15 @@ public class LuckyDrawPage implements FramePage{
 					case 3:
 						player = myapp.getPlayer();
 						// change player atk
-						int score = player.getAtk();
+						int score = player.getScore();
 					    score = score+20;
 						// set back the player
-						player.setAtk(score);
+						player.setScore(score);
+						myapp.setPlayer(player);
 						// Show dialogue for choose
 						myAlertDialog = new AlertDialog.Builder(activity);
 						myAlertDialog.setTitle("Information");
-						myAlertDialog.setMessage("Your attack have been added"+player.getAtk()+20);
+						myAlertDialog.setMessage(" Score added "+player.getScore());
 						DialogInterface.OnClickListener doneClick3 = new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
 							dialog.dismiss();
@@ -103,6 +106,14 @@ public class LuckyDrawPage implements FramePage{
 					break;
 				}
             }
+		});
+		//back to town button
+		Button town = (Button) (activity.findViewById(R.id.button2));
+		town.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				new TownPage().show((Activity)v.getContext());
+		    }
 		});
 	}
 }

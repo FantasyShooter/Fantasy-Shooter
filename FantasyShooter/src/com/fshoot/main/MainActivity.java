@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.example.fantasyshooter.R;
 import com.fshoot.entity.Player;
 import com.fshoot.framepage.BattlePage;
+import com.fshoot.framepage.StartPage;
+import com.fshoot.framepage.TownPage;
 import com.fshoot.main.MyApp;
 
 import android.os.Bundle;
@@ -38,8 +40,8 @@ public class MainActivity extends Activity {
 		
 		
 		// Create the main menu here
-		//new TownPage().show(this);
-		new BattlePage().show(this);
+		new StartPage().show(this);
+		//new BattlePage().show(this);
 	}
 
 //	@Override
