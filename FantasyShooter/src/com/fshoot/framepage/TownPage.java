@@ -8,7 +8,7 @@ import android.widget.FrameLayout;
 import com.fshoot.framepage.BattlePage;
 import com.example.fantasyshooter.R;
 
-public class MenuPage implements FramePage{
+public class TownPage implements FramePage{
 	
 	private Activity activity;
 
@@ -22,7 +22,7 @@ public class MenuPage implements FramePage{
 		// Remove the old one
 		frame.removeAllViewsInLayout();
 		// Show a new screen
-		LayoutInflater.from(activity).inflate(R.layout.frame_menu, frame,true);
+		LayoutInflater.from(activity).inflate(R.layout.frame_town, frame,true);
 		//battle button
 		ImageButton battle = (ImageButton) (activity.findViewById(R.id.imageButton1));
 		battle.setOnClickListener(new View.OnClickListener() {
