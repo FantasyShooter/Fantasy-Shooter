@@ -31,12 +31,20 @@ public class TownPage implements FramePage{
 				new BattlePage().show((Activity)v.getContext());
             }
 		});
-		//player button
-		Button player = (Button) (activity.findViewById(R.id.Button2));
-		player.setOnClickListener(new View.OnClickListener() {
+		//lucky draw button
+		Button luckyDraw = (Button) (activity.findViewById(R.id.Button3));
+		luckyDraw.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				new BattlePage().show((Activity)v.getContext());
+				new LuckyDrawPage().show((Activity)v.getContext());
+            }
+		});
+		//Shop button
+		Button shop = (Button) (activity.findViewById(R.id.Button2));
+		shop.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//new ShopPage().show((Activity)v.getContext());
             }
 		});
 
