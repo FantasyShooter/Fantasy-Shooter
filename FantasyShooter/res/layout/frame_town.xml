@@ -2,31 +2,46 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
     android:gravity="bottom" >
 
-        <ImageView
-    	    android:id="@+id/ImageView1"
-    	    android:layout_width="match_parent"
-    	    android:layout_height="match_parent"
-    	    android:scaleType="centerCrop"
-    	    android:src="@drawable/town" />
+    <ImageView
+        android:id="@+id/ImageView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/town" />
 
-    	<ImageButton
-    	    android:id="@+id/imageButton2"
-    	    android:layout_width="wrap_content"
-    	    android:layout_height="wrap_content"
-    	    android:layout_alignParentBottom="true"
-    	    android:layout_alignParentLeft="true"
-    	    android:layout_marginBottom="14dp"
-    	    android:src="@drawable/hero_new" />
+    <Button
+        android:id="@+id/Button2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="18dp"
+        android:background="#d2691e"
+        android:text="Shop" />
 
-    	<ImageButton
-    	    android:id="@+id/imageButton1"
-    	    android:layout_width="wrap_content"
-    	    android:layout_height="wrap_content"
-    	    android:layout_centerVertical="true"
-    	    android:layout_marginLeft="112dp"
-    	    android:layout_toRightOf="@+id/imageButton2"
-    	    android:src="@drawable/battle" />
+    <Button
+        android:id="@+id/Button3"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/Button1"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="17dp"
+        android:layout_marginLeft="140dp"
+        android:background="#d2691e"
+        android:text="lucky draw" />
+
+    <Button
+        android:id="@+id/Button1"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Button3"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="21dp"
+        android:background="#d2691e"
+        android:text="battle" />
 
 </RelativeLayout>

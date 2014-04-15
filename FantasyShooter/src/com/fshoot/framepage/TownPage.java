@@ -3,7 +3,7 @@ package com.fshoot.framepage;
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import com.fshoot.framepage.BattlePage;
 import com.example.fantasyshooter.R;
@@ -24,7 +24,7 @@ public class TownPage implements FramePage{
 		// Show a new screen
 		LayoutInflater.from(activity).inflate(R.layout.frame_town, frame,true);
 		//battle button
-		ImageButton battle = (ImageButton) (activity.findViewById(R.id.imageButton1));
+		Button battle = (Button) (activity.findViewById(R.id.Button1));
 		battle.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -32,7 +32,7 @@ public class TownPage implements FramePage{
             }
 		});
 		//player button
-		ImageButton player = (ImageButton) (activity.findViewById(R.id.imageButton2));
+		Button player = (Button) (activity.findViewById(R.id.Button2));
 		player.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
