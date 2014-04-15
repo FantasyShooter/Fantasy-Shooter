@@ -13,6 +13,8 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		new PlayerDBHelper(this);
+		
 		// Create the main menu here
 		new TownPage().show(this);
 		//new BattlePage().show(this);
