@@ -11,8 +11,11 @@ import com.example.fantasyshooter.R;
 public class MenuPage implements FramePage{
 	
 	private Activity activity;
+
 	@Override
 	public void show(Activity activity) {
+		this.activity = activity;
+		
 		// 1. GUI
 		this.activity = activity;
 		FrameLayout frame = (FrameLayout) (activity.findViewById(R.id.content_frame));
@@ -33,7 +36,7 @@ public class MenuPage implements FramePage{
 		player.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//new BattlePage.show(this);
+				new BattlePage().show((Activity)v.getContext());
             }
 		});
 
