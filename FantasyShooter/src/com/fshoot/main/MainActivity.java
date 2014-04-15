@@ -6,9 +6,7 @@ import com.example.fantasyshooter.R;
 import com.fshoot.entity.Player;
 import com.fshoot.framepage.BattlePage;
 import com.fshoot.framepage.StartPage;
-import com.fshoot.framepage.TownPage;
 import com.fshoot.main.MyApp;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.app.Activity;
