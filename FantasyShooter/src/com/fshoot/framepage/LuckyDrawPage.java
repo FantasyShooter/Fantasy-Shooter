@@ -58,7 +58,7 @@ public class LuckyDrawPage implements FramePage{
 						// Show dialogue for choose
 						myAlertDialog = new AlertDialog.Builder(activity);
 						myAlertDialog.setTitle("Information");
-						myAlertDialog.setMessage(" Hp added "+player.getHp());
+						myAlertDialog.setMessage(" Hp added to "+player.getHp());
 						DialogInterface.OnClickListener doneClick = new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
 							dialog.dismiss();
@@ -79,7 +79,7 @@ public class LuckyDrawPage implements FramePage{
 						// Show dialogue for choose
 						myAlertDialog = new AlertDialog.Builder(activity);
 						myAlertDialog.setTitle("Information");
-						myAlertDialog.setMessage(" Attack added "+player.getAtk());
+						myAlertDialog.setMessage(" Attack added to "+player.getAtk());
 						DialogInterface.OnClickListener doneClick2 = new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
 							dialog.dismiss();
@@ -100,7 +100,7 @@ public class LuckyDrawPage implements FramePage{
 						// Show dialogue for choose
 						myAlertDialog = new AlertDialog.Builder(activity);
 						myAlertDialog.setTitle("Information");
-						myAlertDialog.setMessage(" Score added "+player.getScore());
+						myAlertDialog.setMessage(" Score added to "+player.getScore());
 						DialogInterface.OnClickListener doneClick3 = new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
 							dialog.dismiss();
@@ -111,9 +111,22 @@ public class LuckyDrawPage implements FramePage{
 						myAlertDialog.show();
 					break;
 				}
-            }
+            
 				drawed[myapp.getDay()] = true;
 				myapp.setLucklyDraw(drawed);
+			}else{
+				myAlertDialog = new AlertDialog.Builder(activity);
+				myAlertDialog.setTitle("Information");
+				myAlertDialog.setMessage(" One draw per day!! See you next day!! ");
+				DialogInterface.OnClickListener doneClick3 = new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+					}
+				};
+				
+				myAlertDialog.setNeutralButton("Done", doneClick3);
+				myAlertDialog.show();
+				}
 			}
 		});
 		//back to town button
