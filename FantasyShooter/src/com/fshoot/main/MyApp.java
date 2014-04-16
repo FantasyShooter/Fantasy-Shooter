@@ -1,7 +1,9 @@
 package com.fshoot.main;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
+import com.fshoot.entity.Level;
 import com.fshoot.entity.Player;
 import com.fshoot.framepage.FramePage;
 
@@ -13,6 +15,7 @@ public class MyApp extends Application {
 	private Player player;
 	private LinkedList<FramePage> screenList = new LinkedList<FramePage>();
 	private int day;
+	private ArrayList<Level> level_list;
 	
 	public LinkedList<FramePage> getScreenList() {
 		return screenList;
@@ -38,4 +41,13 @@ public class MyApp extends Application {
 	public void setDay(int day) {
 		this.day = day;
 	}
+
+	public ArrayList<Level> getLevel_list() {
+		return level_list;
+	}
+
+	public void setLevel_list(ArrayList<Level> level_list) {
+		this.level_list = level_list;
+	}
+
 }

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -19,13 +18,17 @@ public class LuckyDrawPage implements FramePage{
 	
 	private Activity activity;
 	// 1. GUI
-	public void show(Activity activity) {
+	public void show(Activity activity, boolean isSaveToRam) {
 		// 1. GUI
 		FrameLayout frame = (FrameLayout) (activity.findViewById(R.id.content_frame));
 		// Remove the old one
 		frame.removeAllViewsInLayout();
 		// Show a new screen
 		LayoutInflater.from(activity).inflate(R.layout.frame_luckydraw, frame,true);
+		
+		if (isSaveToRam) {
+			((MyApp) activity.getApplicationContext()).getScreenList().add(this);
+		}
 		
 		// 2. setup event listener
 		
@@ -112,7 +115,7 @@ public class LuckyDrawPage implements FramePage{
 		town.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				new TownPage().show((Activity)v.getContext());
+				new TownPage().show((Activity)v.getContext(), true);
 		    }
 		});
 	}
