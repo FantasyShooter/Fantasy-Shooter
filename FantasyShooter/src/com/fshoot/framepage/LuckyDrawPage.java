@@ -38,11 +38,14 @@ public class LuckyDrawPage implements FramePage{
 		go.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				
 				Activity activity = (Activity)v.getContext();
 				int random = (int)Math.ceil(Math.random()*3+1);
 				MyApp myapp = ((MyApp) activity.getApplicationContext());
 				Player player;
 				Builder myAlertDialog;
+				player = myapp.getPlayer();
+				//if()
 				switch(random){
 					case 1: 
 						player = myapp.getPlayer();
