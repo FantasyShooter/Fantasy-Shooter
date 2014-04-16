@@ -29,6 +29,30 @@ public class MainActivity extends Activity {
 		
 		// add to ram
 		((MyApp) getApplicationContext()).setPlayer(player);
+		Player player2;
+		player2 = new Player("Player2");
+		player2.initialPlayer(); // You must initial it
+		
+		//PlayerDBHelper db = new PlayerDBHelper(this);
+		//db.createTablePlayerIfNotExists(db.getWritableDatabase());		
+		// add to db
+		db.add_Player(player2);
+		
+		// add to ram
+		((MyApp) getApplicationContext()).setPlayer(player2);
+		
+		Player player3;
+		player3 = new Player("Player3");
+		player3.initialPlayer(); // You must initial it
+		
+		//PlayerDBHelper db3 = new PlayerDBHelper(this);
+		//db.createTablePlayerIfNotExists(db.getWritableDatabase());		
+		// add to db
+		db.add_Player(player3);
+		
+		// add to ram
+		((MyApp) getApplicationContext()).setPlayer(player3);
+
 		
 		// Get
 //		ArrayList<Player> player_list = db.get_Players();

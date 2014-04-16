@@ -3,10 +3,13 @@ package com.fshoot.framepage;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.fantasyshooter.R;
@@ -33,19 +36,48 @@ public class ScorePage implements FramePage {
 		// 2. setup event listener
 
 		// 3. event start when created
+		PlayerDBHelper db = new PlayerDBHelper(activity);
+		ArrayList<Player> player_list = db.get_Players();
+	    TableLayout ll = (TableLayout) (activity.findViewById(R.id.displayLinear));
+
+
+	    for (int i = 0; i <player_list.size(); i++) {
+
+	        TableRow row= new TableRow(activity);
+	        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
+	        row.setLayoutParams(lp);
+	        TableRow.LayoutParams tlp1 = new TableRow.LayoutParams(100,50);
+	        
+	        TextView tv = new TextView(activity);tv.setGravity(Gravity.CENTER);
+	        TextView qty = new TextView(activity);qty.setGravity(Gravity.CENTER);
+	        TextView day = new TextView(activity);day.setGravity(Gravity.CENTER);
+	        
+	        tv.setText(""+player_list.get(i).getScore());
+	        tv.setLayoutParams(tlp1);
+	        qty.setText(player_list.get(i).getNick_name());
+	        qty.setLayoutParams(tlp1);
+	        day.setText(""+player_list.get(i).getSurvival_day());
+	        day.setLayoutParams(tlp1);
+	        row.addView(qty);
+	        row.addView(tv);
+	        row.addView(day);
+	        ll.addView(row,i);
+	    	
+	    }
 
 		// ask db to get the player score
-		Player player;
+		/*Player player;		
+		
 		PlayerDBHelper db = new PlayerDBHelper(activity);
-		db.createTablePlayerIfNotExists(db.getWritableDatabase());
+		//db.createTablePlayerIfNotExists(db.getWritableDatabase());
 		ArrayList<Player> player_list = db.get_Players();
 		for (int i = 0; i < player_list.size(); i++) {
 			String score = player_list.get(i).getNick_name()+"   "
 					+ player_list.get(i).getScore()+"   "
 					+ player_list.get(i).getSurvival_day() + "\n";
 			TextView textView1 = (TextView) (activity.findViewById(R.id.textView1));
-			textView1.setText(score);
-		}
+			textView1.setText(textView1.getText()+score);
+		}*/
 		//start page button
 		Button start = (Button) (activity.findViewById(R.id.button1));
 		start.setOnClickListener(new View.OnClickListener() {

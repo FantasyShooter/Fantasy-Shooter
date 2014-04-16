@@ -3,26 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <ScrollView
+   <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="90sp"
       >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="184dp"
-                android:layout_marginTop="124dp"
-                android:text="Medium Text"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-        </LinearLayout>
+           <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                android:id="@+id/displayLinear">
+
+            </TableLayout>
+
+
+
     </ScrollView>
 
     <TextView
@@ -42,5 +39,14 @@
          android:layout_alignParentRight="true"
          android:layout_marginBottom="21dp"
          android:text="Back to start page" />
+
+     <TextView
+         android:id="@+id/textView3"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentLeft="true"
+         android:layout_below="@+id/textView2"
+         android:text="Player      Score      Day"
+         android:textSize="20sp" />
 
 </RelativeLayout>

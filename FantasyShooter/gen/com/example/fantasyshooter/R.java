@@ -39,22 +39,24 @@ public final class R {
         public static final int town=0x7f02000f;
     }
     public static final class id {
-        public static final int Button1=0x7f08000e;
-        public static final int Button2=0x7f08000c;
-        public static final int Button3=0x7f08000d;
-        public static final int ImageView1=0x7f08000b;
-        public static final int action_settings=0x7f080010;
-        public static final int atextview=0x7f08000a;
+        public static final int Button1=0x7f080010;
+        public static final int Button2=0x7f08000e;
+        public static final int Button3=0x7f08000f;
+        public static final int ImageView1=0x7f08000d;
+        public static final int action_settings=0x7f080012;
+        public static final int atextview=0x7f08000c;
         public static final int battleRoot=0x7f080001;
         public static final int button1=0x7f080007;
         public static final int button2=0x7f080005;
-        public static final int button4=0x7f08000f;
+        public static final int button4=0x7f080011;
         public static final int content_frame=0x7f080000;
+        public static final int displayLinear=0x7f080009;
         public static final int leftRoot=0x7f080003;
         public static final int rightRoot=0x7f080004;
         public static final int scrollView1=0x7f080008;
         public static final int textView1=0x7f080006;
-        public static final int textView2=0x7f080009;
+        public static final int textView2=0x7f08000a;
+        public static final int textView3=0x7f08000b;
         public static final int topRoot=0x7f080002;
     }
     public static final class layout {
