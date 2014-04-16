@@ -44,8 +44,8 @@ public class LuckyDrawPage implements FramePage{
 				MyApp myapp = ((MyApp) activity.getApplicationContext());
 				Player player;
 				Builder myAlertDialog;
-				player = myapp.getPlayer();
-				//if()
+				boolean[] drawed = myapp.getLucklyDraw();
+				if(myapp.getDay()<3 && myapp.getLucklyDraw()[myapp.getDay()]== false){
 				switch(random){
 					case 1: 
 						player = myapp.getPlayer();
@@ -112,6 +112,9 @@ public class LuckyDrawPage implements FramePage{
 					break;
 				}
             }
+				drawed[myapp.getDay()] = true;
+				myapp.setLucklyDraw(drawed);
+			}
 		});
 		//back to town button
 		Button town = (Button) (activity.findViewById(R.id.button2));

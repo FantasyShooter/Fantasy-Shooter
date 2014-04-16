@@ -16,6 +16,14 @@ public class MyApp extends Application {
 	private LinkedList<FramePage> screenList = new LinkedList<FramePage>();
 	private int day;
 	private boolean lucklyDraw[] = new boolean[]{false, false, false};
+	public boolean[] getLucklyDraw() {
+		return lucklyDraw;
+	}
+
+	public void setLucklyDraw(boolean[] lucklyDraw) {
+		this.lucklyDraw = lucklyDraw;
+	}
+
 	private ArrayList<Level> level_list;
 	
 	public LinkedList<FramePage> getScreenList() {
