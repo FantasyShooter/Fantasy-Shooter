@@ -1,12 +1,12 @@
 package com.fshoot.main;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 import com.example.fantasyshooter.R;
 import com.fshoot.entity.Player;
-import com.fshoot.framepage.BattlePage;
 import com.fshoot.framepage.StartPage;
 import com.fshoot.main.MyApp;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.app.Activity;
@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
 		
 		
 		// Create the main menu here
-		new StartPage().show(this);
+		new StartPage().show(this, true);
 		//new BattlePage().show(this);
 	}
 
@@ -52,5 +52,21 @@ public class MainActivity extends Activity {
 	@Override
 	public void onBackPressed() {
 		// Change back button to pause game or quit game or save game
+		MyApp myapp = ((MyApp) this.getApplicationContext());
+		LinkedList<com.fshoot.framepage.FramePage> screenList = myapp.getScreenList();
+		screenList.removeLast();
+		com.fshoot.framepage.FramePage page = null;
+		if ((page = screenList.peekLast()) != null) {
+			Log.d("Debug", "not null screenlist");
+			String result = "";
+			for (int i = 0; i < screenList.size(); i++) {
+				result += screenList.get(i).getClass().toString() + "\n";
+			}
+			Log.d("Debug", result);
+			page.show(this,false);
+		} else {
+			Log.d("Debug", "Null screenlist");
+			super.onBackPressed();
+		}
 	}
 }

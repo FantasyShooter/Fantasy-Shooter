@@ -18,7 +18,7 @@ public class StartPage implements FramePage {
 	private Activity activity;
 
 	@Override
-	public void show(Activity act) {
+	public void show(Activity act, boolean isSaveToRam) {
 
 		this.activity = act;
 		// 1. GUI
@@ -29,6 +29,11 @@ public class StartPage implements FramePage {
 		// Show a new screen
 		LayoutInflater.from(activity)
 				.inflate(R.layout.frame_start, frame, true);
+		
+		// Save this FramePage into Ram
+				if (isSaveToRam) {
+					((MyApp) activity.getApplicationContext()).getScreenList().add(this);
+				}
 
 		// 2. setup event listener
 
@@ -62,7 +67,7 @@ public class StartPage implements FramePage {
 						// add to ram
 						myapp.setPlayer(player);
 						
-						new TownPage().show(activity);
+						new TownPage().show(activity, true);
 					}
 				});
 
