@@ -11,13 +11,13 @@ public class BigM implements Monster{
 	private ImageView image;
 	
 	public BigM(){
-		hp = 300;
+		hp = 400;
 		atk = 3;
 		speed = 1;
 	}
 
 	@Override
-	public void create(Activity activity) {
+	public void initial(Activity activity) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -29,9 +29,10 @@ public class BigM implements Monster{
 	}
 
 	@Override
-	public void startMove(Activity activity) {
+	public void moveToLeft() {
 		// TODO Auto-generated method stub
 		
 	}
+
 	
 }
