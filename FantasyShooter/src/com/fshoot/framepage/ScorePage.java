@@ -38,8 +38,8 @@ public class ScorePage implements FramePage {
 		db.createTablePlayerIfNotExists(db.getWritableDatabase());
 		ArrayList<Player> player_list = db.get_Players();
 		for (int i = 0; i < player_list.size(); i++) {
-			String score = player_list.get(i).getNick_name()
-					+ player_list.get(i).getScore()
+			String score = player_list.get(i).getNick_name()+"   "
+					+ player_list.get(i).getScore()+"   "
 					+ player_list.get(i).getSurvival_day() + "\n";
 			TextView textView1 = (TextView) (activity.findViewById(R.id.textView1));
 			textView1.setText(score);

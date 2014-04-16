@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -7,18 +7,28 @@
         android:id="@+id/atextview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/text_view" />
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:text="@string/text_view"
+        android:textSize="40sp" />
 
     <Button
-        android:id="@+id/abutton"
+        android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_text" />
+        android:layout_below="@+id/atextview"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="buy that shit" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_below="@+id/button2"
+        android:layout_marginTop="26dp"
         android:text="@string/button_text" />
 
-</LinearLayout>
+</RelativeLayout>
