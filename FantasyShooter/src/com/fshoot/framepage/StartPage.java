@@ -92,7 +92,7 @@ public class StartPage implements FramePage {
 		score.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// new ScorePage().show((Activity)v.getContext());
+				new ScorePage().show((Activity)v.getContext(),true);
 			}
 		});
 
