@@ -1,10 +1,14 @@
 package com.fshoot.entity;
 
 import com.example.fantasyshooter.R;
+import com.fshoot.framepage.StartPage;
+import com.fshoot.framepage.TownPage;
 import com.fshoot.main.MainActivity;
 import com.fshoot.main.MyApp;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.util.Log;
@@ -24,6 +28,7 @@ public class SmallM implements Monster {
 	private int speed;
 	private ImageView image;
 	private Handler handler;
+	private Activity activity;
 
 	public SmallM() {
 		hp = 200;
@@ -33,6 +38,8 @@ public class SmallM implements Monster {
 
 	public void initial(Activity activity) {
 		Log.d("debug", "SmallM.create()");
+		this.activity = activity;
+
 		// Create a monster image
 		ImageView im = new ImageView(activity);
 		im.setImageResource(R.drawable.small);
@@ -40,10 +47,11 @@ public class SmallM implements Monster {
 			@Override
 			public void onClick(View v) {
 				Activity activity = (Activity) v.getContext();
-				deductHP((Activity) v.getContext());
 				// Play fire sound
 				MainActivity.mp = MediaPlayer.create(activity, R.raw.fire);
 				MainActivity.mp.start();
+
+				deductHP((Activity) v.getContext());
 			}
 		});
 		// Backup
@@ -77,7 +85,52 @@ public class SmallM implements Monster {
 					.findViewById(R.id.rightRoot);
 			image.clearAnimation();
 			rl.removeView(image);
+
+			if (rl.getChildCount() == 0) {
+				finishDay(activity);
+			}
 		}
+	}
+
+	public void finishDay(Activity act) {
+		Log.d("Debug", "Level finish.");
+		MyApp myapp = ((MyApp) activity.getApplicationContext());
+		Player player = myapp.getPlayer();
+		int nextday = player.getSurvival_day() + 1;
+		
+		// Finish a day
+		player.setSurvival_day(nextday);	
+		AlertDialog.Builder myAlertDialog = new AlertDialog.Builder(act);
+		DialogInterface.OnClickListener doneClick;
+		
+		if (nextday == 3) {
+			myAlertDialog.setTitle("Information");
+			myAlertDialog
+					.setMessage("Congratulations! People are save now.");
+			 doneClick = new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+					// back to town
+					new StartPage().show(activity, true);
+				}
+			};
+		} else {
+			
+			myAlertDialog.setTitle("Information");
+			myAlertDialog
+					.setMessage("One day has been passed.\nGet some rest.");
+			doneClick = new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+					// back to town
+					new TownPage().show(activity, true);
+				}
+			};
+			
+		}
+		myAlertDialog.setNeutralButton("Done", doneClick);
+		myAlertDialog.show();
+		
 	}
 
 	public void moveToLeft() {

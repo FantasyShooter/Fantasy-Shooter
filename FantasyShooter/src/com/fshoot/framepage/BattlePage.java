@@ -43,9 +43,9 @@ public class BattlePage implements FramePage {
 		// Reset level data
 		MyApp myapp = ((MyApp) activity.getApplicationContext());
 		ArrayList<Level> level_list = new ArrayList<Level>();
+		level_list.add(new Level(1, 0, 0));
+		level_list.add(new Level(2, 0, 0));
 		level_list.add(new Level(3, 0, 0));
-		level_list.add(new Level(10, 15, 1));
-		level_list.add(new Level(10, 15, 5));
 		myapp.setLevel_list(level_list);
 
 		// 2. setup event listener
@@ -94,6 +94,7 @@ public class BattlePage implements FramePage {
 				int survival_day = myapp.getPlayer().getSurvival_day();
 				Level level = myapp.getLevel_list().get(survival_day);
 
+				
 				if (level.hasMoreMonster()) {
 					releaseMonster();
 				}
