@@ -5,6 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TableLayout;
+import android.widget.TextView;
+
+import com.fshoot.entity.Player;
 import com.fshoot.framepage.BattlePage;
 import com.example.fantasyshooter.R;
 import com.fshoot.main.MyApp;
@@ -29,6 +33,13 @@ public class TownPage implements FramePage {
 		if (isSaveToRam) {
 			((MyApp) activity.getApplicationContext()).getScreenList().add(this);
 		}
+		
+		//Show the Day
+		TextView tv = (TextView) (activity.findViewById(R.id.textView1));
+		MyApp myapp = ((MyApp) activity.getApplicationContext());
+		Player player;
+		player = myapp.getPlayer();
+		tv.setText("Day: "+player.getSurvival_day());
 
 		// battle button
 		Button battle = (Button) (activity.findViewById(R.id.Button1));

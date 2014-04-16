@@ -46,6 +46,7 @@ public class LuckyDrawPage implements FramePage{
 				Builder myAlertDialog;
 				boolean[] drawed = myapp.getLucklyDraw();
 				if(myapp.getDay()<3 && myapp.getLucklyDraw()[myapp.getDay()]== false){
+					//random case
 				switch(random){
 					case 1: 
 						player = myapp.getPlayer();
