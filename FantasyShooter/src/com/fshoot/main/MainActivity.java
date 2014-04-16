@@ -7,12 +7,15 @@ import com.fshoot.entity.Player;
 import com.fshoot.framepage.StartPage;
 import com.fshoot.main.MyApp;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.app.Activity;
 
 public class MainActivity extends Activity {
 
+	public static MediaPlayer mp;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,6 +32,8 @@ public class MainActivity extends Activity {
 		
 		// add to ram
 		((MyApp) getApplicationContext()).setPlayer(player);
+		
+		
 		
 		// Get
 //		ArrayList<Player> player_list = db.get_Players();

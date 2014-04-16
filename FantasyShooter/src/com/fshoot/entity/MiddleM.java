@@ -11,13 +11,13 @@ public class MiddleM implements Monster{
 	private ImageView image;
 	
 	public MiddleM(){
-		hp = 200;
+		hp = 300;
 		atk = 2;
 		speed = 2;
 	}
 
 	@Override
-	public void create(Activity activity) {
+	public void initial(Activity activity) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -29,9 +29,11 @@ public class MiddleM implements Monster{
 	}
 
 	@Override
-	public void startMove(Activity activity) {
+	public void moveToLeft() {
 		// TODO Auto-generated method stub
 		
 	}
+
+
 	
 }
