@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -44,6 +46,15 @@ public class ScorePage implements FramePage {
 			TextView textView1 = (TextView) (activity.findViewById(R.id.textView1));
 			textView1.setText(score);
 		}
+		//start page button
+		Button start = (Button) (activity.findViewById(R.id.button1));
+		start.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				new StartPage().show((Activity)v.getContext(),true);
+			}
+		});
+		
 
 	}
 }
