@@ -51,7 +51,15 @@ public class TownPage implements FramePage {
 		shop.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				// new ShopPage().show((Activity)v.getContext());
+				 new ShopPage().show((Activity)v.getContext(),true);
+			}
+		});
+		// Score button
+		Button score = (Button) (activity.findViewById(R.id.button4));
+		score.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				new ScorePage().show((Activity)v.getContext(),true);
 			}
 		});
 

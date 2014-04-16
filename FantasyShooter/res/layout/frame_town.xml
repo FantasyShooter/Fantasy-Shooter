@@ -42,4 +42,15 @@
         android:background="#d2691e"
         android:text="battle" />
 
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/Button1"
+        android:layout_alignBottom="@+id/Button1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:background="#d2691e"
+        android:text="Score" />
+
 </RelativeLayout>

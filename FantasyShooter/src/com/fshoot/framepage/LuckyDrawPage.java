@@ -49,7 +49,7 @@ public class LuckyDrawPage implements FramePage{
 				switch(random){
 					case 1: 
 						player = myapp.getPlayer();
-						// change player hp 
+						// change player health 
 						int hp = player.getHp();
 						hp = hp+20;
 						// set back the player
@@ -70,7 +70,7 @@ public class LuckyDrawPage implements FramePage{
 					break;
 					case 2:
 						player = myapp.getPlayer();
-						// change player atk
+						// change player attack
 						int atk = player.getAtk();
 					    atk = atk+20;
 						// set back the player
@@ -91,7 +91,7 @@ public class LuckyDrawPage implements FramePage{
 					break;
 					case 3:
 						player = myapp.getPlayer();
-						// change player atk
+						// change player score
 						int score = player.getScore();
 					    score = score+20;
 						// set back the player

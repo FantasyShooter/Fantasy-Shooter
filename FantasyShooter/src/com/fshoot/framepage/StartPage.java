@@ -12,6 +12,7 @@ import android.widget.Button;
 import com.example.fantasyshooter.R;
 import com.fshoot.entity.Player;
 import com.fshoot.main.MyApp;
+import com.fshoot.main.PlayerDBHelper;
 
 public class StartPage implements FramePage {
 
@@ -64,6 +65,10 @@ public class StartPage implements FramePage {
 						Player player = new Player(value);
 						player.initialPlayer(); // You must initial it
 						
+						PlayerDBHelper db = new PlayerDBHelper(activity);
+						db.createTablePlayerIfNotExists(db.getWritableDatabase());		
+						// add to db
+						db.add_Player(player);
 						// add to ram
 						myapp.setPlayer(player);
 						

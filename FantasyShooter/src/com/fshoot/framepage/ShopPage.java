@@ -1,10 +1,16 @@
 package com.fshoot.framepage;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.example.fantasyshooter.R;
+import com.fshoot.entity.Player;
 import com.fshoot.main.MyApp;
 
 public class ShopPage implements FramePage {
@@ -26,6 +32,44 @@ public class ShopPage implements FramePage {
 		// 2. setup event listener
 		
 		// 3. event start when created
+		// buy button click
+		Button buy = (Button) (activity.findViewById(R.id.button2));
+		buy.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Activity activity = (Activity)v.getContext();
+				MyApp myapp = ((MyApp) activity.getApplicationContext());
+				Player player;
+				Builder myAlertDialog;
+				player = myapp.getPlayer();
+				// change player atk
+				int atk = player.getAtk();
+			    atk = atk+20;
+				// set back the player
+				player.setScore(atk);
+				myapp.setPlayer(player);
+				// Show dialogue for choose
+				myAlertDialog = new AlertDialog.Builder(activity);
+				myAlertDialog.setTitle("Information");
+				myAlertDialog.setMessage(" Attack added to "+player.getAtk());
+				DialogInterface.OnClickListener doneClick3 = new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+					}
+				};
+				
+				myAlertDialog.setNeutralButton("Done", doneClick3);
+				myAlertDialog.show();
+		    }
+		});
+		//back to town button click
+		Button town = (Button) (activity.findViewById(R.id.button1));
+		town.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				new TownPage().show((Activity)v.getContext(), true);
+		    }
+		});
 	}
 
 }

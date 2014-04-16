@@ -7,10 +7,7 @@
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="237dp"
-        android:layout_marginTop="138dp" >
+      >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,8 +18,6 @@
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
                 android:layout_marginLeft="184dp"
                 android:layout_marginTop="124dp"
                 android:text="Medium Text"
@@ -30,5 +25,22 @@
         </LinearLayout>
     </ScrollView>
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Score"
+        android:textSize="40sp"  />
+
+     <Button
+         android:id="@+id/button1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:layout_alignParentRight="true"
+         android:layout_marginBottom="21dp"
+         android:text="Back to start page" />
 
 </RelativeLayout>

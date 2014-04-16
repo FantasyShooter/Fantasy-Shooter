@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -38,12 +40,21 @@ public class ScorePage implements FramePage {
 		db.createTablePlayerIfNotExists(db.getWritableDatabase());
 		ArrayList<Player> player_list = db.get_Players();
 		for (int i = 0; i < player_list.size(); i++) {
-			String score = player_list.get(i).getNick_name()
-					+ player_list.get(i).getScore()
+			String score = player_list.get(i).getNick_name()+"   "
+					+ player_list.get(i).getScore()+"   "
 					+ player_list.get(i).getSurvival_day() + "\n";
 			TextView textView1 = (TextView) (activity.findViewById(R.id.textView1));
 			textView1.setText(score);
 		}
+		//start page button
+		Button start = (Button) (activity.findViewById(R.id.button1));
+		start.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				new StartPage().show((Activity)v.getContext(),true);
+			}
+		});
+		
 
 	}
 }
