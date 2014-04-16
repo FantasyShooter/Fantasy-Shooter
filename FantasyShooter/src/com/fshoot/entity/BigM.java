@@ -29,7 +29,7 @@ public class BigM implements Monster{
 	}
 
 	@Override
-	public void startMove() {
+	public void startMove(Activity activity) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.view.ViewGroup.LayoutParams;
 
 public class SmallM implements Monster {
 
@@ -64,7 +65,8 @@ public class SmallM implements Monster {
 		}
 	}
 	
-	public void startMove(){
+	public void startMove(Activity activity){
+		//RelativeLayout rl = (RelativeLayout) activity.findViewById(R.id.rightRoot);
 		
 	}
 

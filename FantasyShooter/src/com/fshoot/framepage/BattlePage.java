@@ -92,6 +92,6 @@ class PrepareMonster extends Thread {
 		// level.deductBigM();
 		// }
 		monster.create(activity);
-		monster.startMove();
+		monster.startMove(activity);
 	}
 }

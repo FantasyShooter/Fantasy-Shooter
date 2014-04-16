@@ -11,5 +11,5 @@ public interface Monster {
 	
 	public void deductHP(Activity activity);
 	
-	public void startMove();
+	public void startMove(Activity activity);
 }
