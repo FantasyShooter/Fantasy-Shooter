@@ -38,9 +38,8 @@ public class Monster {
 	static int rowY[] = {156,312,468};
 	
 
-	public void initial(Activity activity) {
+	public void initial() {
 		Log.d("debug", "SmallM.create()");
-		this.activity = activity;
 
 		image.setOnClickListener(new OnClickListener() {
 			@Override
@@ -123,7 +122,6 @@ public class Monster {
 		}
 		myAlertDialog.setNeutralButton("Done", doneClick);
 		myAlertDialog.show();
-
 	}
 
 	public void moveToLeft() {
@@ -140,7 +138,6 @@ public class Monster {
 				image.startAnimation(animation);
 			}
 		});
-
 	}
 
 	class MyAnimationListener implements AnimationListener {
