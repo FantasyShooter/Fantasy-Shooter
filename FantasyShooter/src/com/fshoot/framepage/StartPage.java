@@ -3,6 +3,7 @@ package com.fshoot.framepage;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.media.MediaPlayer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -11,6 +12,7 @@ import android.widget.Button;
 
 import com.example.fantasyshooter.R;
 import com.fshoot.entity.Player;
+import com.fshoot.main.MainActivity;
 import com.fshoot.main.MyApp;
 import com.fshoot.main.PlayerDBHelper;
 
@@ -37,6 +39,12 @@ public class StartPage implements FramePage {
 		// 2. setup event listener
 
 		// 3. event start when created
+		
+		// background sound
+		MainActivity.bgm = new MediaPlayer();
+		MainActivity.bgm = MediaPlayer.create(activity, R.raw.the_town_music);
+		MainActivity.bgm.setLooping(true);
+		MainActivity.bgm.start();
 
 		// start button
 		Button start = (Button) (activity.findViewById(R.id.button1));
@@ -79,7 +87,8 @@ public class StartPage implements FramePage {
 						// Canceled.
 					}
 				});
-
+				
+				alert.setCancelable(false);
 				alert.show();
 				// see
 				// http://androidsnippets.com/prompt-user-input-with-an-alertdialog

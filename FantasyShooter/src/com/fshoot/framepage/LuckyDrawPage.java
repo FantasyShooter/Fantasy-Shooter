@@ -74,6 +74,7 @@ public class LuckyDrawPage implements FramePage {
 						};
 
 						myAlertDialog.setNeutralButton("Done", doneClick);
+						myAlertDialog.setCancelable(false);
 						myAlertDialog.show();
 						break;
 					case 2:
@@ -96,6 +97,7 @@ public class LuckyDrawPage implements FramePage {
 						};
 
 						myAlertDialog.setNeutralButton("Done", doneClick2);
+						myAlertDialog.setCancelable(false);
 						myAlertDialog.show();
 						break;
 					case 3:
@@ -118,6 +120,7 @@ public class LuckyDrawPage implements FramePage {
 						};
 
 						myAlertDialog.setNeutralButton("Done", doneClick3);
+						myAlertDialog.setCancelable(false);
 						myAlertDialog.show();
 						break;
 					}
@@ -136,6 +139,7 @@ public class LuckyDrawPage implements FramePage {
 					};
 
 					myAlertDialog.setNeutralButton("Done", doneClick3);
+					myAlertDialog.setCancelable(false);
 					myAlertDialog.show();
 				}
 			}

@@ -14,6 +14,7 @@ import android.app.Activity;
 public class MainActivity extends Activity {
 
 	public static MediaPlayer mp;
+	public static MediaPlayer bgm;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
