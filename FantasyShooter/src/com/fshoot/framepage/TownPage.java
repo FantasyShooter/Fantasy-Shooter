@@ -37,6 +37,9 @@ public class TownPage implements FramePage {
 		}
 		
 		// background sound
+		if(MainActivity.bgm!=null){
+			MainActivity.bgm.stop();
+		}
 		MainActivity.bgm = new MediaPlayer();
 		MainActivity.bgm = MediaPlayer.create(activity, R.raw.the_town_music);
 		MainActivity.bgm.setLooping(true);

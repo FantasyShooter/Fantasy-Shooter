@@ -67,6 +67,10 @@ public class Monster {
 		Log.d("debug", "under RightRoot:" + rl.getChildCount());
 	}
 	
+	public void attack(){
+		
+	}
+	
 	public void deductHP(Activity activity) {
 		Log.d("Debug", "deductHP()");
 		MyApp myapp = ((MyApp) activity.getApplicationContext());
@@ -96,6 +100,7 @@ public class Monster {
 		player.setSurvival_day(nextday);
 		AlertDialog.Builder myAlertDialog = new AlertDialog.Builder(act);
 		DialogInterface.OnClickListener doneClick;
+		
 
 		if (nextday == 3) {
 			myAlertDialog.setTitle("Information");
@@ -121,6 +126,7 @@ public class Monster {
 
 		}
 		myAlertDialog.setNeutralButton("Done", doneClick);
+		myAlertDialog.setCancelable(false);
 		myAlertDialog.show();
 	}
 
@@ -134,18 +140,18 @@ public class Monster {
 				TranslateAnimation animation = new TranslateAnimation(0, step, 0, 0);
 				animation.setDuration(500);
 				animation.setFillAfter(false);
-				animation.setAnimationListener(new MyAnimationListener(image, step));
+				animation.setAnimationListener(new moveToLeftAnimationListener(image, step));
 				image.startAnimation(animation);
 			}
 		});
 	}
 
-	class MyAnimationListener implements AnimationListener {
+	class moveToLeftAnimationListener implements AnimationListener {
 
 		private int step;
 		private View v;
 
-		public MyAnimationListener(View v, int step) {
+		public moveToLeftAnimationListener(View v, int step) {
 			this.step = step;
 			this.v = v;
 		}
@@ -155,8 +161,6 @@ public class Monster {
 			Log.d("debug", "onAnimationEnd()");
 			v.clearAnimation();
 			LayoutParams old_lp = (LayoutParams) v.getLayoutParams();
-			Log.d("debug", "v.getWidth():" + v.getWidth());
-			Log.d("debug", "v.getHeight():" + v.getHeight());
 			LayoutParams lp = new LayoutParams(v.getWidth(), v.getHeight());
 
 			int leftM = old_lp.leftMargin + step;
@@ -168,11 +172,8 @@ public class Monster {
 				leftM = 0;
 				lp.setMargins(leftM, topM, rightM, bottomM);
 				v.setLayoutParams(lp);
+				attack();
 			} else {
-				// Log.d("debug","leftM:"+leftM);
-				// Log.d("debug","topM:"+topM);
-				// Log.d("debug","rightM:"+rightM);
-				// Log.d("debug","bottomM:"+bottomM);
 				lp.setMargins(leftM, topM, rightM, bottomM);
 				v.setLayoutParams(lp);
 				moveToLeft();

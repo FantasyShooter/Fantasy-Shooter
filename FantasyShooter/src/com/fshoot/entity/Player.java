@@ -35,12 +35,12 @@ public class Player {
 		survival_day = 0;
 	}
 	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
+	public void deductHP(){
+		// deduct wall hp
+		
+		// if hp <= 0 , go to game over
+		
+		// Update the hp 
 	}
 
 	public int getTotalAtk() {
@@ -52,6 +52,14 @@ public class Player {
 	}
 
 	// Getter and Setter
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public int getAtk() {
 		return atk;
 	}
