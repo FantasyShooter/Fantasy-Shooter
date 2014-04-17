@@ -3,7 +3,6 @@ package com.fshoot.main;
 import java.util.LinkedList;
 
 import com.example.fantasyshooter.R;
-import com.fshoot.entity.Player;
 import com.fshoot.framepage.StartPage;
 import com.fshoot.main.MyApp;
 
@@ -21,23 +20,8 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		// Ask for user input the name
-		Player player = new Player("Player");
-		player.initialPlayer(); // You must initial it
-		
 		PlayerDBHelper db = new PlayerDBHelper(this);
-		db.createTablePlayerIfNotExists(db.getWritableDatabase());		
-		// add to db
-		db.add_Player(player);
-		
-		// add to ram
-		((MyApp) getApplicationContext()).setPlayer(player);
-		
-		// Get
-//		ArrayList<Player> player_list = db.get_Players();
-//		for(int i=0;i<player_list.size();i++){
-//			Log.d("debug",player_list.get(i).getNick_name());
-//		}
+		db.createTablePlayerIfNotExists(db.getWritableDatabase());
 		
 		
 		// Create the main menu here

@@ -23,18 +23,16 @@ public class StartPage implements FramePage {
 
 		this.activity = act;
 		// 1. GUI
-		FrameLayout frame = (FrameLayout) (activity
-				.findViewById(R.id.content_frame));
+		FrameLayout frame = (FrameLayout) (activity.findViewById(R.id.content_frame));
 		// Remove the old one
 		frame.removeAllViewsInLayout();
 		// Show a new screen
-		LayoutInflater.from(activity)
-				.inflate(R.layout.frame_start, frame, true);
-		
+		LayoutInflater.from(activity).inflate(R.layout.frame_start, frame, true);
+
 		// Save this FramePage into Ram
-				if (isSaveToRam) {
-					((MyApp) activity.getApplicationContext()).getScreenList().add(this);
-				}
+		if (isSaveToRam) {
+			((MyApp) activity.getApplicationContext()).getScreenList().add(this);
+		}
 
 		// 2. setup event listener
 
@@ -45,7 +43,7 @@ public class StartPage implements FramePage {
 		start.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//final Activity activity = (Activity) v.getContext();
+				// final Activity activity = (Activity) v.getContext();
 
 				AlertDialog.Builder alert = new AlertDialog.Builder(activity);
 
@@ -64,30 +62,29 @@ public class StartPage implements FramePage {
 						// Ask for user input the name
 						Player player = new Player(value);
 						player.initialPlayer(); // You must initial it
-						
+
 						PlayerDBHelper db = new PlayerDBHelper(activity);
-						db.createTablePlayerIfNotExists(db.getWritableDatabase());		
+						db.createTablePlayerIfNotExists(db.getWritableDatabase());
 						// add to db
 						db.add_Player(player);
 						// add to ram
 						myapp.setPlayer(player);
-						
+
 						new TownPage().show(activity, true);
 					}
 				});
 
-				alert.setNegativeButton("Cancel",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog, int whichButton) {
-								// Canceled.
-							}
-						});
+				alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						// Canceled.
+					}
+				});
 
-				alert.show();	
+				alert.show();
 				// see
 				// http://androidsnippets.com/prompt-user-input-with-an-alertdialog
 
-				//new TownPage().show((Activity)v.getContext());
+				// new TownPage().show((Activity)v.getContext());
 			}
 		});
 		// start game
@@ -97,7 +94,7 @@ public class StartPage implements FramePage {
 		score.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				new ScorePage().show((Activity)v.getContext(),true);
+				new ScorePage().show((Activity) v.getContext(), true);
 			}
 		});
 

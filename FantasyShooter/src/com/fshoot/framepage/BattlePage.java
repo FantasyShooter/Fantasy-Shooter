@@ -6,17 +6,13 @@ import com.example.fantasyshooter.R;
 import com.fshoot.entity.Level;
 import com.fshoot.entity.Monster;
 import com.fshoot.entity.SmallM;
-import com.fshoot.main.MainActivity;
 import com.fshoot.main.MyApp;
 
 import android.app.Activity;
-import android.media.MediaPlayer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
 
 public class BattlePage implements FramePage {
 
