@@ -109,6 +109,27 @@ public class StartPage implements FramePage {
 				new ScorePage().show((Activity) v.getContext(), true);
 			}
 		});
+		
+		// About button
+		Button about = (Button) (activity.findViewById(R.id.button3));
+		about.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				AlertDialog.Builder myAlertDialog = new AlertDialog.Builder(activity);
+				myAlertDialog.setTitle("About FantasyShooter");
+				myAlertDialog
+						.setMessage("Fantasy Shooter is devised by Kenneth, Tim, Sing, Near in 2014.");
+				DialogInterface.OnClickListener doneClick3 = new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+					}
+				};
+
+				myAlertDialog.setNeutralButton("Done", doneClick3);
+				myAlertDialog.setCancelable(false);
+				myAlertDialog.show();
+			}
+		});
 
 	}
 
