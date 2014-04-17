@@ -69,6 +69,7 @@ public class ShopPage implements FramePage {
 				};
 				
 				myAlertDialog.setNeutralButton("Done", doneClick3);
+				myAlertDialog.setCancelable(false);
 				myAlertDialog.show();
 		    }else{
 				// Show dialogue for choose
@@ -82,6 +83,7 @@ public class ShopPage implements FramePage {
 				};
 				
 				myAlertDialog2.setNeutralButton("Done", doneClick3);
+				myAlertDialog2.setCancelable(false);
 				myAlertDialog2.show();
 		    }
 			}

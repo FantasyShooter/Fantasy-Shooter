@@ -8,9 +8,11 @@ import com.fshoot.entity.Level;
 import com.fshoot.entity.MiddleM;
 import com.fshoot.entity.Monster;
 import com.fshoot.entity.SmallM;
+import com.fshoot.main.MainActivity;
 import com.fshoot.main.MyApp;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
@@ -43,6 +45,15 @@ public class BattlePage implements FramePage {
 		if (isSaveToRam) {
 			((MyApp) activity.getApplicationContext()).getScreenList().add(this);
 		}
+		
+		// background sound
+		if(MainActivity.bgm!=null){
+			MainActivity.bgm.stop();
+		}
+		MainActivity.bgm = new MediaPlayer();
+		MainActivity.bgm = MediaPlayer.create(activity, R.raw.battle_music);
+		MainActivity.bgm.setLooping(true);
+		MainActivity.bgm.start();
 
 		// Reset level data
 		MyApp myapp = ((MyApp) activity.getApplicationContext());

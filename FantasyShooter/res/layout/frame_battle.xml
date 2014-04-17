@@ -4,7 +4,9 @@
     android:id="@+id/battleRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:background="@drawable/background">
+    
 
     <!-- The first row is W:match_parent H:300px -->
 
@@ -49,5 +51,7 @@
             android:text="Button3" /> -->
             
     </RelativeLayout>
+    
+
 
 </RelativeLayout>
