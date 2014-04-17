@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import com.example.fantasyshooter.R;
 import com.fshoot.entity.Player;
@@ -32,6 +33,14 @@ public class ShopPage implements FramePage {
 		// 2. setup event listener
 		
 		// 3. event start when created
+		
+		// show the score
+		TextView tv = (TextView) (activity.findViewById(R.id.textView1));
+		MyApp myapp = ((MyApp) activity.getApplicationContext());
+		Player player;
+		player = myapp.getPlayer();
+		tv.setText(" Score: "+player.getScore());
+		
 		// buy button click
 		Button buy = (Button) (activity.findViewById(R.id.button2));
 		buy.setOnClickListener(new View.OnClickListener() {
@@ -40,8 +49,9 @@ public class ShopPage implements FramePage {
 				Activity activity = (Activity)v.getContext();
 				MyApp myapp = ((MyApp) activity.getApplicationContext());
 				Player player;
-				Builder myAlertDialog;
 				player = myapp.getPlayer();
+				if(player.getScore()>=100){
+				Builder myAlertDialog;
 				// change player atk
 				int atk = player.getAtk();
 			    atk = atk+20;
@@ -60,7 +70,21 @@ public class ShopPage implements FramePage {
 				
 				myAlertDialog.setNeutralButton("Done", doneClick3);
 				myAlertDialog.show();
+		    }else{
+				// Show dialogue for choose
+		    	Builder myAlertDialog2 = new AlertDialog.Builder(activity);
+				myAlertDialog2.setTitle("Information");
+				myAlertDialog2.setMessage(" You need 100 score to add the attack");
+				DialogInterface.OnClickListener doneClick3 = new DialogInterface.OnClickListener() {
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+					}
+				};
+				
+				myAlertDialog2.setNeutralButton("Done", doneClick3);
+				myAlertDialog2.show();
 		    }
+			}
 		});
 		//back to town button click
 		Button town = (Button) (activity.findViewById(R.id.button1));

@@ -34,7 +34,7 @@ public class TownPage implements FramePage {
 			((MyApp) activity.getApplicationContext()).getScreenList().add(this);
 		}
 		
-		//Show the Day
+		// Show the Day
 		TextView tv = (TextView) (activity.findViewById(R.id.textView1));
 		MyApp myapp = ((MyApp) activity.getApplicationContext());
 		Player player;

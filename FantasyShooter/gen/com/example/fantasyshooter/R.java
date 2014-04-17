@@ -21,22 +21,23 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int battle=0x7f020000;
-        public static final int boss=0x7f020001;
-        public static final int fhero=0x7f020002;
-        public static final int fire_graphic=0x7f020003;
-        public static final int grass=0x7f020004;
-        public static final int gun=0x7f020005;
-        public static final int hero_new=0x7f020006;
-        public static final int ic_launcher=0x7f020007;
-        public static final int icon_coin=0x7f020008;
-        public static final int mhero=0x7f020009;
-        public static final int middle=0x7f02000a;
-        public static final int reload=0x7f02000b;
-        public static final int shop=0x7f02000c;
-        public static final int sky=0x7f02000d;
-        public static final int small=0x7f02000e;
-        public static final int town=0x7f02000f;
+        public static final int background=0x7f020000;
+        public static final int battle=0x7f020001;
+        public static final int boss=0x7f020002;
+        public static final int fhero=0x7f020003;
+        public static final int fire_graphic=0x7f020004;
+        public static final int grass=0x7f020005;
+        public static final int gun=0x7f020006;
+        public static final int hero_new=0x7f020007;
+        public static final int ic_launcher=0x7f020008;
+        public static final int icon_coin=0x7f020009;
+        public static final int mhero=0x7f02000a;
+        public static final int middle=0x7f02000b;
+        public static final int reload=0x7f02000c;
+        public static final int shop=0x7f02000d;
+        public static final int sky=0x7f02000e;
+        public static final int small=0x7f02000f;
+        public static final int town=0x7f020010;
     }
     public static final class id {
         public static final int Button1=0x7f090010;
@@ -72,8 +73,10 @@ public final class R {
         public static final int main=0x7f080000;
     }
     public static final class raw {
-        public static final int fire=0x7f040000;
-        public static final int knock=0x7f040001;
+        public static final int battle_music=0x7f040000;
+        public static final int fire=0x7f040001;
+        public static final int knock=0x7f040002;
+        public static final int the_town_music=0x7f040003;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;

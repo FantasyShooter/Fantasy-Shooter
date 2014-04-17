@@ -47,8 +47,8 @@ public class StartPage implements FramePage {
 
 				AlertDialog.Builder alert = new AlertDialog.Builder(activity);
 
-				alert.setTitle("Title");
-				alert.setMessage("Message");
+				alert.setTitle("Information");
+				alert.setMessage("Please input your user name");
 
 				// Set an EditText view to get user input
 				final EditText input = new EditText(activity);
