@@ -1,5 +1,8 @@
 package com.fshoot.entity;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class Player {
 
 	private int id;
@@ -9,6 +12,7 @@ public class Player {
 	private String nick_name;
 	private int score;
 	private int survival_day;
+	static Lock lock = new ReentrantLock(); // Create a lock
 
 	public Player() {
 
@@ -18,7 +22,7 @@ public class Player {
 		super();
 		this.nick_name = nick_name;
 	}
-	
+
 	public Player(int id, String nick_name, int score, int survival_day) {
 		super();
 		this.id = id;
@@ -26,21 +30,30 @@ public class Player {
 		this.score = score;
 		this.survival_day = survival_day;
 	}
-	
-	public void initialPlayer(){
+
+	public void initialPlayer() {
 		atk = 50;
-		hp = 100;
+		hp = 10;
 		weapon = new Weapon(50);
 		score = 0;
 		survival_day = 0;
 	}
-	
-	public void deductHP(){
-		// deduct wall hp
-		
-		// if hp <= 0 , go to game over
-		
-		// Update the hp 
+
+	public void deductHP(int damge) {
+		lock.lock(); // Acquire the lock
+
+		try {
+			// deduct wall hp
+			this.hp = hp - damge;
+			// if hp <= 0 , go to game over
+			if (hp < 0) {
+				hp = 0;
+			}
+		} catch (Exception ex) { // optional catch block
+
+		} finally {
+			lock.unlock(); // Release the lock
+		}
 	}
 
 	public int getTotalAtk() {
@@ -59,7 +72,7 @@ public class Player {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public int getAtk() {
 		return atk;
 	}

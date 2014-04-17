@@ -1,26 +1,26 @@
 package com.fshoot.entity;
 
+import java.util.ArrayList;
+
 import android.util.Log;
 
 public class Level {
 
-	private int num_of_smallM;
-	private int num_of_middleM;
-	private int num_of_bigM;
+	private ArrayList<Integer> mList;
 
 	public Level(int num_of_smallM, int num_of_middleM, int num_of_bigM) {
 		super();
-		this.num_of_smallM = num_of_smallM;
-		this.num_of_middleM = num_of_middleM;
-		this.num_of_bigM = num_of_bigM;
+		mList = new ArrayList<Integer>();
+		mList.add(num_of_smallM);
+		mList.add(num_of_middleM);
+		mList.add(num_of_bigM);
 	}
 
 	public boolean hasMoreMonster() {
+		Log.d("hasMoreMonster", "s:" + mList.get(0) + " m:" + mList.get(1) + " b:" + mList.get(2));
 		boolean result = false;
 
-		Log.d("Level.hasMoreMonster()", "num_of_smallM:" + num_of_smallM
-				+ " num_of_middleM:" + num_of_middleM + " num_of_bigM:" + num_of_bigM);
-		if (num_of_smallM > 0 || num_of_middleM > 0 || num_of_bigM > 0) {
+		if (mList.get(0) > 0 || mList.get(1) > 0 || mList.get(2) > 0) {
 			result = true;
 		}
 
@@ -28,40 +28,15 @@ public class Level {
 	}
 
 	public void deductSmallM() {
-		num_of_smallM--;
+		mList.set(0, mList.get(0)-1);
 	}
 
 	public void deductMiddleM() {
-		num_of_middleM--;
+		mList.set(1, mList.get(1)-1);
 	}
 
 	public void deductBigM() {
-		num_of_middleM--;
-	}
-
-	// Getter and Setter
-	public int getNum_of_smallM() {
-		return num_of_smallM;
-	}
-
-	public void setNum_of_smallM(int num_of_smallM) {
-		this.num_of_smallM = num_of_smallM;
-	}
-
-	public int getNum_of_middleM() {
-		return num_of_middleM;
-	}
-
-	public void setNum_of_middleM(int num_of_middleM) {
-		this.num_of_middleM = num_of_middleM;
-	}
-
-	public int getNum_of_bigM() {
-		return num_of_bigM;
-	}
-
-	public void setNum_of_bigM(int num_of_bigM) {
-		this.num_of_bigM = num_of_bigM;
+		mList.set(2, mList.get(2)-1);
 	}
 
 }

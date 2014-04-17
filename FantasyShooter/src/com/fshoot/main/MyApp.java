@@ -14,7 +14,9 @@ public class MyApp extends Application {
 
 	private Player player;
 	private LinkedList<FramePage> screenList = new LinkedList<FramePage>();
+	private ArrayList<Level> level_list;
 	private boolean lucklyDraw[] = new boolean[]{false, false, false};
+	
 	public boolean[] getLucklyDraw() {
 		return lucklyDraw;
 	}
@@ -23,7 +25,10 @@ public class MyApp extends Application {
 		this.lucklyDraw = lucklyDraw;
 	}
 
-	private ArrayList<Level> level_list;
+	
+	public void cleanScreenList(){
+		screenList.clear();
+	}
 	
 	public LinkedList<FramePage> getScreenList() {
 		return screenList;

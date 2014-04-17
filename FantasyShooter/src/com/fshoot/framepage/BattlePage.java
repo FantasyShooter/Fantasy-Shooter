@@ -7,6 +7,7 @@ import com.fshoot.entity.BigM;
 import com.fshoot.entity.Level;
 import com.fshoot.entity.MiddleM;
 import com.fshoot.entity.Monster;
+import com.fshoot.entity.Player;
 import com.fshoot.entity.SmallM;
 import com.fshoot.main.MainActivity;
 import com.fshoot.main.MyApp;
@@ -31,6 +32,7 @@ public class BattlePage implements FramePage {
 	private Handler handler;
 	private TextView txtStartGame;
 	private AlphaAnimation fadeOut;
+	public static boolean gameRunning = true;
 
 	@Override
 	public void show(Activity activity, boolean isSaveToRam) {
@@ -41,9 +43,11 @@ public class BattlePage implements FramePage {
 		frame.removeAllViewsInLayout();
 		// Show a new screen
 		LayoutInflater.from(activity).inflate(R.layout.frame_battle, frame, true);
+		
+		MyApp myapp = ((MyApp) activity.getApplicationContext());
 		// Save this FramePage into Ram
 		if (isSaveToRam) {
-			((MyApp) activity.getApplicationContext()).getScreenList().add(this);
+			myapp.getScreenList().add(this);
 		}
 		
 		// background sound
@@ -56,7 +60,6 @@ public class BattlePage implements FramePage {
 		MainActivity.bgm.start();
 
 		// Reset level data
-		MyApp myapp = ((MyApp) activity.getApplicationContext());
 		ArrayList<Level> level_list = new ArrayList<Level>();
 		level_list.add(new Level(1, 0, 0));
 		level_list.add(new Level(2, 0, 0));
@@ -67,7 +70,11 @@ public class BattlePage implements FramePage {
 
 		// 3. event start when created
 		// 3.1 Show game start
-		gameStartAppear(myapp.getPlayer().getSurvival_day());
+		Player player = myapp.getPlayer();
+		TextView txtHP = (TextView) activity.findViewById(R.id.txtHP);
+		txtHP.setText("HP " + player.getHp());
+		
+		gameStartAppear(player.getSurvival_day());
 	}
 
 	public void gameStartAppear(int survival_day) {
@@ -127,11 +134,11 @@ public class BattlePage implements FramePage {
 		txtStartGame.startAnimation(fadeIn);
 	}
 
-	public void releaseMonster() {
+	public synchronized void releaseMonster() {
 		Log.d("debug", "releaseMonster()");
 		handler = new Handler();
 
-		int delayTime = ((int) (Math.random() * 100 + 25)) * 10;
+		int delayTime = ((int) (Math.random() * 100 + 50)) * 10;
 		Log.d("delayTime", "" + delayTime);
 
 		handler.postDelayed(new Runnable() {
@@ -139,11 +146,12 @@ public class BattlePage implements FramePage {
 			public void run() {
 				MyApp myapp = ((MyApp) activity.getApplicationContext());
 				int survival_day = myapp.getPlayer().getSurvival_day();
+				
 				Level level = myapp.getLevel_list().get(survival_day);
 
 				Monster monster = null;
-				int ran = (int) Math.random() * 3;
-
+				int ran = (int) (Math.random() * 3);
+				
 				if (ran == 0) {
 					monster = new SmallM(activity);
 					level.deductSmallM();

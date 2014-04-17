@@ -15,12 +15,18 @@
         android:layout_width="match_parent"
         android:layout_height="300px" >
 
-        <!-- <Button
-            android:id="@+id/button1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Button1" /> -->
-
+        <TextView
+            android:id="@+id/txtHP"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:paddingTop = "8dp"
+            android:paddingLeft = "10dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="18dp"
+            android:text="HP "
+            android:background="#d2691e"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
     </RelativeLayout>
 

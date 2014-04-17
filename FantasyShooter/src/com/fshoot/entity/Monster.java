@@ -1,10 +1,12 @@
 package com.fshoot.entity;
 
 import com.example.fantasyshooter.R;
+import com.fshoot.framepage.BattlePage;
 import com.fshoot.framepage.StartPage;
 import com.fshoot.framepage.TownPage;
 import com.fshoot.main.MainActivity;
 import com.fshoot.main.MyApp;
+import com.fshoot.main.PlayerDBHelper;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -19,6 +21,7 @@ import android.view.animation.TranslateAnimation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.RelativeLayout.LayoutParams;
 
 public class Monster {
@@ -30,13 +33,12 @@ public class Monster {
 	protected Handler handler;
 	protected Activity activity;
 	protected int step;
-	
-	public Monster(){
-		
+
+	public Monster() {
+
 	}
-	
-	static int rowY[] = {156,312,468};
-	
+
+	static int rowY[] = { 156, 312, 468 };
 
 	public void initial() {
 		Log.d("debug", "SmallM.create()");
@@ -52,7 +54,7 @@ public class Monster {
 				deductHP((Activity) v.getContext());
 			}
 		});
-		
+
 		// Add to battle view
 		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(100, 100);
 		RelativeLayout rl = (RelativeLayout) activity.findViewById(R.id.rightRoot);
@@ -66,11 +68,39 @@ public class Monster {
 		rl.addView(image, lp);
 		Log.d("debug", "under RightRoot:" + rl.getChildCount());
 	}
-	
-	public void attack(){
-		
+
+	public void attack() {
+		if (BattlePage.gameRunning) {
+			// play attack sound
+			MediaPlayer kockWall = new MediaPlayer();
+			kockWall = MediaPlayer.create(activity, R.raw.knock);
+			kockWall.start();
+
+			// Deduct HP
+			MyApp myapp = (MyApp) activity.getApplicationContext();
+			Player player = myapp.getPlayer();
+			player.deductHP(atk);
+			// Update the hp
+			TextView txtHP = (TextView) activity.findViewById(R.id.txtHP);
+			txtHP.setText("HP " + player.getHp());
+
+			if (player.getHp() <= 0) {
+				// Game over
+				finishDay();
+			} else {
+				// wait some times and attack
+				if (BattlePage.gameRunning) {
+					handler.postDelayed(new Runnable() {
+						@Override
+						public void run() {
+							attack();
+						}
+					}, 1000);
+				}
+			}
+		}
 	}
-	
+
 	public void deductHP(Activity activity) {
 		Log.d("Debug", "deductHP()");
 		MyApp myapp = ((MyApp) activity.getApplicationContext());
@@ -85,61 +115,83 @@ public class Monster {
 			rl.removeView(image);
 
 			if (rl.getChildCount() == 0) {
-				finishDay(activity);
+				finishDay();
 			}
 		}
 	}
 
-	public void finishDay(Activity act) {
+	public void finishDay() {
 		Log.d("Debug", "Level finish.");
+		BattlePage.gameRunning = false;
+
+		AlertDialog.Builder myAlertDialog = new AlertDialog.Builder(activity);
+		DialogInterface.OnClickListener doneClick;
 		MyApp myapp = ((MyApp) activity.getApplicationContext());
 		Player player = myapp.getPlayer();
-		int nextday = player.getSurvival_day() + 1;
 
-		// Finish a day
-		player.setSurvival_day(nextday);
-		AlertDialog.Builder myAlertDialog = new AlertDialog.Builder(act);
-		DialogInterface.OnClickListener doneClick;
-		
+		if (player.getHp() > 0) {
+			int nextday = player.getSurvival_day() + 1;
 
-		if (nextday == 3) {
+			// Finish a day
+			player.setSurvival_day(nextday);
+
+			if (nextday == 3) {
+				myAlertDialog.setTitle("Information");
+				myAlertDialog.setMessage("Congratulations! People are save now.");
+				doneClick = new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+						// back to town
+						new StartPage().show(activity, true);
+					}
+				};
+			} else {
+
+				myAlertDialog.setTitle("Information");
+				myAlertDialog.setMessage("One day has been passed.\nGet some rest.");
+				doneClick = new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+						// back to town
+						new TownPage().show(activity, true);
+					}
+				};
+
+			}
+			
+		} else {
+			// if the game lose
 			myAlertDialog.setTitle("Information");
-			myAlertDialog.setMessage("Congratulations! People are save now.");
+			myAlertDialog.setMessage("You lose, monster eat all of the people.");
 			doneClick = new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 					dialog.dismiss();
-					// back to town
+					// Save score
+					MyApp myapp = ((MyApp) activity.getApplicationContext());
+					new PlayerDBHelper(activity).add_Player(myapp.getPlayer());
+					
+					// Back to start page
+					myapp.cleanScreenList();
 					new StartPage().show(activity, true);
 				}
 			};
-		} else {
-
-			myAlertDialog.setTitle("Information");
-			myAlertDialog.setMessage("One day has been passed.\nGet some rest.");
-			doneClick = new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					dialog.dismiss();
-					// back to town
-					new TownPage().show(activity, true);
-				}
-			};
-
 		}
+		// Show dialog
 		myAlertDialog.setNeutralButton("Done", doneClick);
 		myAlertDialog.setCancelable(false);
 		myAlertDialog.show();
 	}
 
 	public void moveToLeft() {
-		Log.d("debug", "moveToLeft()");
-		handler = new Handler();
+		//Log.d("debug", "moveToLeft()");
 
+		handler = new Handler();
 		handler.post(new Runnable() {
 			@Override
 			public void run() {
 				TranslateAnimation animation = new TranslateAnimation(0, step, 0, 0);
-				animation.setDuration(500);
-				animation.setFillAfter(false);
+				animation.setDuration(250);
+				animation.setFillAfter(true);
 				animation.setAnimationListener(new moveToLeftAnimationListener(image, step));
 				image.startAnimation(animation);
 			}
@@ -158,7 +210,7 @@ public class Monster {
 
 		@Override
 		public void onAnimationEnd(Animation animation) {
-			Log.d("debug", "onAnimationEnd()");
+			//Log.d("debug", "onAnimationEnd()");
 			v.clearAnimation();
 			LayoutParams old_lp = (LayoutParams) v.getLayoutParams();
 			LayoutParams lp = new LayoutParams(v.getWidth(), v.getHeight());
@@ -172,6 +224,7 @@ public class Monster {
 				leftM = 0;
 				lp.setMargins(leftM, topM, rightM, bottomM);
 				v.setLayoutParams(lp);
+				// Start attack
 				attack();
 			} else {
 				lp.setMargins(leftM, topM, rightM, bottomM);
