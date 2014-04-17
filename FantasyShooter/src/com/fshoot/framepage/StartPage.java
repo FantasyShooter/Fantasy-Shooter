@@ -111,7 +111,7 @@ public class StartPage implements FramePage {
 		});
 		
 		// About button
-		Button about = (Button) (activity.findViewById(R.id.button2));
+		Button about = (Button) (activity.findViewById(R.id.button3));
 		about.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
