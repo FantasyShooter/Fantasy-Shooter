@@ -73,8 +73,10 @@ public final class R {
         public static final int main=0x7f080000;
     }
     public static final class raw {
-        public static final int fire=0x7f040000;
-        public static final int knock=0x7f040001;
+        public static final int battle_music=0x7f040000;
+        public static final int fire=0x7f040001;
+        public static final int knock=0x7f040002;
+        public static final int the_town_music=0x7f040003;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;

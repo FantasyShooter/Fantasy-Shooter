@@ -11,7 +11,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="28dp"
         android:text="@string/text_view"
-        android:textSize="40sp" />
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/button2"
@@ -20,15 +20,22 @@
         android:layout_below="@+id/atextview"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
-        android:text="buy that shit" />
+        android:text="buy" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button2"
         android:layout_below="@+id/button2"
-        android:layout_marginTop="26dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
         android:text="@string/button_text" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>
