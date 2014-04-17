@@ -55,9 +55,8 @@ public class BattlePage implements FramePage {
 		// 2. setup event listener
 
 		// 3. event start when created
+		// 3.1 Show game start
 		gameStartAppear(myapp.getPlayer().getSurvival_day());
-
-		startNextDay();
 	}
 
 	public void gameStartAppear(int survival_day) {
@@ -65,7 +64,7 @@ public class BattlePage implements FramePage {
 		txtStartGame = new TextView(activity);
 		txtStartGame.setGravity(Gravity.CENTER);
 
-		txtStartGame.setText("Day " + survival_day + 1 + " start. \n");
+		txtStartGame.setText("Day " + (survival_day + 1) + " start. \n");
 		txtStartGame.setTextAppearance(activity, android.R.style.TextAppearance_Large);
 
 		RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(
@@ -101,6 +100,8 @@ public class BattlePage implements FramePage {
 			public void onAnimationEnd(Animation arg0) {
 				((RelativeLayout) (activity.findViewById(R.id.battleRoot)))
 						.removeView(txtStartGame);
+				// After fade out, start create monster
+				releaseMonster();
 			}
 
 			@Override
@@ -113,11 +114,6 @@ public class BattlePage implements FramePage {
 		});
 		// Start fade in
 		txtStartGame.startAnimation(fadeIn);
-	}
-
-	public void startNextDay() {
-		Log.d("Debug", "startNextDay()");
-		releaseMonster();
 	}
 
 	public void releaseMonster() {
