@@ -14,6 +14,7 @@ public class BigM extends Monster{
 		speed = 1;
 		
 		step = -10 * speed;
+		score = 30;
 		image = new ImageView(activity);
 		image.setImageResource(R.drawable.boss);
 	}

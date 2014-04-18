@@ -14,6 +14,7 @@ public class SmallM extends Monster {
 		speed = 3;
 		
 		step = -10 * speed;
+		score = 10;
 		image = new ImageView(activity);
 		image.setImageResource(R.drawable.small);
 	}

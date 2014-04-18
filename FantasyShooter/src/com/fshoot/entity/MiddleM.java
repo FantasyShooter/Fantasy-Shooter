@@ -14,6 +14,7 @@ public class MiddleM extends Monster{
 		speed = 2;
 
 		step = -10 * speed;
+		score = 20;
 		image = new ImageView(activity);
 		image.setImageResource(R.drawable.middle);
 	}

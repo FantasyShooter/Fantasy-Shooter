@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" 
-    android:background="@drawable/background">
+    android:background="@drawable/battle_bg_sky_glass">
     
 
     <!-- The first row is W:match_parent H:300px -->
@@ -13,7 +13,8 @@
     <RelativeLayout
         android:id="@+id/topRoot"
         android:layout_width="match_parent"
-        android:layout_height="300px" >
+        android:layout_height="300px"
+         >
 
         <TextView
             android:id="@+id/txtHP"
@@ -26,6 +27,20 @@
             android:layout_marginTop="18dp"
             android:text="HP "
             android:background="#d2691e"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/txtScore"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_alignBaseline="@+id/txtHP"
+            android:layout_alignBottom="@+id/txtHP"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="25dp"
+            android:background="#d2691e"
+            android:paddingLeft="10dp"
+            android:paddingTop="8dp"
+            android:text="Score 0"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
     </RelativeLayout>

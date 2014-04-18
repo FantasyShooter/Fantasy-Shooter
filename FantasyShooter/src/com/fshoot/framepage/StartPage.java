@@ -76,8 +76,6 @@ public class StartPage implements FramePage {
 
 						PlayerDBHelper db = new PlayerDBHelper(activity);
 						db.createTablePlayerIfNotExists(db.getWritableDatabase());
-						// add to db
-						db.add_Player(player);
 						// add to ram
 						myapp.setPlayer(player);
 

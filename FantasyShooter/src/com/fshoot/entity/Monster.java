@@ -33,6 +33,7 @@ public class Monster {
 	protected Handler handler;
 	protected Activity activity;
 	protected int step;
+	protected int score;
 
 	public Monster() {
 
@@ -104,16 +105,23 @@ public class Monster {
 	public void deductHP(Activity activity) {
 		Log.d("Debug", "deductHP()");
 		MyApp myapp = ((MyApp) activity.getApplicationContext());
-
-		int totalAtk = myapp.getPlayer().getTotalAtk();
+		Player player = myapp.getPlayer();
+		int totalAtk = player.getTotalAtk();
 		hp -= totalAtk;
 		// if hp is lower then 1, delete this
 		if (hp <= 0) {
+			// if monster die
 			Log.d("Debug", "HP <0 kill");
+			// add score
+			player.addScore(score);
+			// Update hp ui
+			TextView txtScore = (TextView) activity.findViewById(R.id.txtScore);
+			txtScore.setText("Score " + player.getScore());
+			// remove image
 			RelativeLayout rl = (RelativeLayout) activity.findViewById(R.id.rightRoot);
 			image.clearAnimation();
 			rl.removeView(image);
-
+			// if no more monster
 			if (rl.getChildCount() == 0) {
 				finishDay();
 			}
@@ -136,6 +144,9 @@ public class Monster {
 			player.setSurvival_day(nextday);
 
 			if (nextday == 3) {
+				// Save the score to db
+				new PlayerDBHelper(activity).add_Player(player);
+
 				myAlertDialog.setTitle("Information");
 				myAlertDialog.setMessage("Congratulations! People are save now.");
 				doneClick = new DialogInterface.OnClickListener() {
@@ -158,9 +169,12 @@ public class Monster {
 				};
 
 			}
-			
+
 		} else {
 			// if the game lose
+			// Save the score to db
+			new PlayerDBHelper(activity).add_Player(player);
+
 			myAlertDialog.setTitle("Information");
 			myAlertDialog.setMessage("You lose, monster eat all of the people.");
 			doneClick = new DialogInterface.OnClickListener() {
@@ -169,7 +183,7 @@ public class Monster {
 					// Save score
 					MyApp myapp = ((MyApp) activity.getApplicationContext());
 					new PlayerDBHelper(activity).add_Player(myapp.getPlayer());
-					
+
 					// Back to start page
 					myapp.cleanScreenList();
 					new StartPage().show(activity, true);
@@ -183,7 +197,7 @@ public class Monster {
 	}
 
 	public void moveToLeft() {
-		//Log.d("debug", "moveToLeft()");
+		// Log.d("debug", "moveToLeft()");
 
 		handler = new Handler();
 		handler.post(new Runnable() {
@@ -210,7 +224,7 @@ public class Monster {
 
 		@Override
 		public void onAnimationEnd(Animation animation) {
-			//Log.d("debug", "onAnimationEnd()");
+			// Log.d("debug", "onAnimationEnd()");
 			v.clearAnimation();
 			LayoutParams old_lp = (LayoutParams) v.getLayoutParams();
 			LayoutParams lp = new LayoutParams(v.getWidth(), v.getHeight());

@@ -63,6 +63,10 @@ public class Player {
 			return weapon.getAtk() + atk;
 		}
 	}
+	
+	public void addScore(int score){
+		this.score += score;
+	}
 
 	// Getter and Setter
 	public int getId() {
