@@ -44,15 +44,15 @@ public class BattlePage implements FramePage {
 		frame.removeAllViewsInLayout();
 		// Show a new screen
 		LayoutInflater.from(activity).inflate(R.layout.frame_battle, frame, true);
-		
+
 		MyApp myapp = ((MyApp) activity.getApplicationContext());
 		// Save this FramePage into Ram
 		if (isSaveToRam) {
 			myapp.getScreenList().add(this);
 		}
-		
+
 		// background sound
-		if(MainActivity.bgm!=null){
+		if (MainActivity.bgm != null) {
 			MainActivity.bgm.stop();
 		}
 		MainActivity.bgm = new MediaPlayer();
@@ -68,14 +68,18 @@ public class BattlePage implements FramePage {
 		myapp.setLevel_list(level_list);
 		BattlePage.gameRunning = true;
 
+		// Update hp ui
+		Player player = myapp.getPlayer();
+		TextView txtScore = (TextView) activity.findViewById(R.id.txtScore);
+		txtScore.setText("Score " + player.getScore());
+
 		// 2. setup event listener
 
 		// 3. event start when created
 		// 3.1 Show game start
-		Player player = myapp.getPlayer();
 		TextView txtHP = (TextView) activity.findViewById(R.id.txtHP);
 		txtHP.setText("HP " + player.getHp());
-		
+
 		gameStartAppear(player.getSurvival_day());
 	}
 
@@ -87,8 +91,8 @@ public class BattlePage implements FramePage {
 		txtStartGame.setText("Day " + (survival_day + 1) + " start. \n");
 		txtStartGame.setTextAppearance(activity, android.R.style.TextAppearance_Large);
 
-		RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(
-				LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
+				LayoutParams.WRAP_CONTENT);
 		rlp.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
 		// txtStartGame.startAnimation(AnimationUtils.loadAnimation(activity,
 		// android.R.anim.fade_in));
@@ -118,8 +122,7 @@ public class BattlePage implements FramePage {
 		fadeOut.setAnimationListener(new AnimationListener() {
 			@Override
 			public void onAnimationEnd(Animation arg0) {
-				((RelativeLayout) (activity.findViewById(R.id.battleRoot)))
-						.removeView(txtStartGame);
+				((RelativeLayout) (activity.findViewById(R.id.battleRoot))).removeView(txtStartGame);
 				// After fade out, start create monster
 				releaseMonster();
 			}
@@ -148,16 +151,16 @@ public class BattlePage implements FramePage {
 			public void run() {
 				MyApp myapp = ((MyApp) activity.getApplicationContext());
 				int survival_day = myapp.getPlayer().getSurvival_day();
-				
+
 				Level level = myapp.getLevel_list().get(survival_day);
 				ArrayList<MonsterNumberPair> list = level.getmList();
-				
+
 				int ran = (int) (Math.random() * list.size());
 				Monster monster = null;
 
 				MonsterNumberPair mp = list.get(ran);
-				
-				if(mp.monsterName.equals("small")){
+
+				if (mp.monsterName.equals("small")) {
 					monster = new SmallM(activity);
 				} else if (mp.monsterName.equals("middle")) {
 					monster = new MiddleM(activity);
@@ -170,7 +173,7 @@ public class BattlePage implements FramePage {
 					Log.d("debug", "No more " + mp.monsterName);
 					list.remove(mp);
 				}
-				
+
 				monster.initial();
 				monster.moveToLeft();
 
