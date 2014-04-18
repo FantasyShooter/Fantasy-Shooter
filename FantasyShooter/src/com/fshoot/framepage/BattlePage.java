@@ -7,6 +7,7 @@ import com.fshoot.entity.BigM;
 import com.fshoot.entity.Level;
 import com.fshoot.entity.MiddleM;
 import com.fshoot.entity.Monster;
+import com.fshoot.entity.MonsterNumberPair;
 import com.fshoot.entity.Player;
 import com.fshoot.entity.SmallM;
 import com.fshoot.main.MainActivity;
@@ -61,10 +62,11 @@ public class BattlePage implements FramePage {
 
 		// Reset level data
 		ArrayList<Level> level_list = new ArrayList<Level>();
-		level_list.add(new Level(1, 0, 0));
-		level_list.add(new Level(2, 0, 0));
-		level_list.add(new Level(3, 0, 0));
+		level_list.add(new Level(2, 1, 0));
+		level_list.add(new Level(2, 3, 1));
+		level_list.add(new Level(4, 5, 3));
 		myapp.setLevel_list(level_list);
+		BattlePage.gameRunning = true;
 
 		// 2. setup event listener
 
@@ -148,20 +150,27 @@ public class BattlePage implements FramePage {
 				int survival_day = myapp.getPlayer().getSurvival_day();
 				
 				Level level = myapp.getLevel_list().get(survival_day);
-
-				Monster monster = null;
-				int ran = (int) (Math.random() * 3);
+				ArrayList<MonsterNumberPair> list = level.getmList();
 				
-				if (ran == 0) {
+				int ran = (int) (Math.random() * list.size());
+				Monster monster = null;
+
+				MonsterNumberPair mp = list.get(ran);
+				
+				if(mp.monsterName.equals("small")){
 					monster = new SmallM(activity);
-					level.deductSmallM();
-				} else if (ran == 1) {
+				} else if (mp.monsterName.equals("middle")) {
 					monster = new MiddleM(activity);
-					level.deductMiddleM();
-				} else if (ran == 2) {
+				} else if (mp.monsterName.equals("big")) {
 					monster = new BigM(activity);
-					level.deductBigM();
 				}
+
+				mp.numberOfMonster--;
+				if (mp.numberOfMonster == 0) {
+					Log.d("debug", "No more " + mp.monsterName);
+					list.remove(mp);
+				}
+				
 				monster.initial();
 				monster.moveToLeft();
 

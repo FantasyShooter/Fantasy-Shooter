@@ -54,7 +54,14 @@ public class MainActivity extends Activity {
 			page.show(this,false);
 		} else {
 			Log.d("Debug", "Null screenlist");
+			bgm.release();
 			super.onBackPressed();
 		}
+	}
+	
+	@Override
+	public void onPause(){
+		bgm.release();
+		super.onPause();
 	}
 }
