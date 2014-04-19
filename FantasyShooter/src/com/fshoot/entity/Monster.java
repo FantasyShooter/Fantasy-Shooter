@@ -4,7 +4,6 @@ import com.example.fantasyshooter.R;
 import com.fshoot.framepage.BattlePage;
 import com.fshoot.framepage.StartPage;
 import com.fshoot.framepage.TownPage;
-import com.fshoot.main.MainActivity;
 import com.fshoot.main.MyApp;
 import com.fshoot.main.PlayerDBHelper;
 
@@ -12,6 +11,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +34,7 @@ public class Monster {
 	protected Activity activity;
 	protected int step;
 	protected int score;
+	protected boolean alive;
 
 	public Monster() {
 
@@ -43,14 +44,21 @@ public class Monster {
 
 	public void initial() {
 		Log.d("debug", "SmallM.create()");
-
+		alive = true;
+		handler = new Handler();
 		image.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Activity activity = (Activity) v.getContext();
 				// Play fire sound
-				MainActivity.mp = MediaPlayer.create(activity, R.raw.fire);
-				MainActivity.mp.start();
+				MediaPlayer mp = MediaPlayer.create(activity, R.raw.fire);
+				mp.setOnCompletionListener(new OnCompletionListener(){
+					@Override
+					public void onCompletion(MediaPlayer mp) {
+						mp.release();
+					}
+				});
+				mp.start();
 
 				deductHP((Activity) v.getContext());
 			}
@@ -71,10 +79,16 @@ public class Monster {
 	}
 
 	public void attack() {
-		if (BattlePage.gameRunning) {
+		if (BattlePage.gameRunning && alive) {
 			// play attack sound
 			MediaPlayer kockWall = new MediaPlayer();
 			kockWall = MediaPlayer.create(activity, R.raw.knock);
+			kockWall.setOnCompletionListener(new OnCompletionListener(){
+				@Override
+				public void onCompletion(MediaPlayer kockWall) {
+					kockWall.release();
+				}
+			});
 			kockWall.start();
 
 			// Deduct HP
@@ -112,6 +126,8 @@ public class Monster {
 		if (hp <= 0) {
 			// if monster die
 			Log.d("Debug", "HP <0 kill");
+			// Stop the attack
+			alive = false;
 			// add score
 			player.addScore(score);
 			// Update hp ui
@@ -122,7 +138,7 @@ public class Monster {
 			image.clearAnimation();
 			rl.removeView(image);
 			// if no more monster
-			if (rl.getChildCount() == 0) {
+			if (myapp.getCurrentLevel().hasMoreMonster() == false && rl.getChildCount() <= 0) {
 				finishDay();
 			}
 		}
@@ -198,18 +214,18 @@ public class Monster {
 
 	public void moveToLeft() {
 		// Log.d("debug", "moveToLeft()");
-
-		handler = new Handler();
-		handler.post(new Runnable() {
-			@Override
-			public void run() {
-				TranslateAnimation animation = new TranslateAnimation(0, step, 0, 0);
-				animation.setDuration(250);
-				animation.setFillAfter(true);
-				animation.setAnimationListener(new moveToLeftAnimationListener(image, step));
-				image.startAnimation(animation);
-			}
-		});
+		if (BattlePage.gameRunning && alive) {
+			handler.post(new Runnable() {
+				@Override
+				public void run() {
+					TranslateAnimation animation = new TranslateAnimation(0, step, 0, 0);
+					animation.setDuration(200);
+					animation.setFillAfter(true);
+					animation.setAnimationListener(new moveToLeftAnimationListener(image, step));
+					image.startAnimation(animation);
+				}
+			});
+		}
 	}
 
 	class moveToLeftAnimationListener implements AnimationListener {

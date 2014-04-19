@@ -62,9 +62,9 @@ public class BattlePage implements FramePage {
 
 		// Reset level data
 		ArrayList<Level> level_list = new ArrayList<Level>();
-		level_list.add(new Level(2, 1, 0));
-		level_list.add(new Level(2, 3, 1));
-		level_list.add(new Level(4, 5, 3));
+		level_list.add(new Level(5, 3, 1));
+		level_list.add(new Level(5, 5, 3));
+		level_list.add(new Level(10, 10, 5));
 		myapp.setLevel_list(level_list);
 		BattlePage.gameRunning = true;
 
@@ -167,7 +167,7 @@ public class BattlePage implements FramePage {
 				} else if (mp.monsterName.equals("big")) {
 					monster = new BigM(activity);
 				}
-
+				// Deduct one from how many monster need to release
 				mp.numberOfMonster--;
 				if (mp.numberOfMonster == 0) {
 					Log.d("debug", "No more " + mp.monsterName);
@@ -176,7 +176,7 @@ public class BattlePage implements FramePage {
 
 				monster.initial();
 				monster.moveToLeft();
-
+				// if has more monster, keep release
 				if (level.hasMoreMonster()) {
 					releaseMonster();
 				}

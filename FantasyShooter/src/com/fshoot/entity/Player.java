@@ -33,7 +33,7 @@ public class Player {
 
 	public void initialPlayer() {
 		atk = 50;
-		hp = 10;
+		hp = 20;
 		weapon = new Weapon(50);
 		score = 0;
 		survival_day = 0;

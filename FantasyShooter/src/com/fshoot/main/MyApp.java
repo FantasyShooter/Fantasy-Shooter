@@ -17,6 +17,11 @@ public class MyApp extends Application {
 	private ArrayList<Level> level_list;
 	private boolean lucklyDraw[] = new boolean[]{false, false, false};
 	
+	public Level getCurrentLevel(){
+		return level_list.get(player.getSurvival_day());
+	}
+
+	// Getter and Setter
 	public boolean[] getLucklyDraw() {
 		return lucklyDraw;
 	}
@@ -38,7 +43,6 @@ public class MyApp extends Application {
 		this.screenList = screenList;
 	}
 
-	// Getter and Setter
 	public Player getPlayer() {
 		return player;
 	}
