@@ -78,8 +78,24 @@ public class StartPage implements FramePage {
 						db.createTablePlayerIfNotExists(db.getWritableDatabase());
 						// add to ram
 						myapp.setPlayer(player);
+						if(value.isEmpty()||value==null){
+							// Show dialogue for choose
+							AlertDialog.Builder myAlertDialog = new AlertDialog.Builder(activity);
+							myAlertDialog.setTitle("Information");
+							myAlertDialog.setMessage(" No user name ");
+							DialogInterface.OnClickListener doneClick3 = new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int which) {
+								dialog.dismiss();
+								}
+							};
+							
+							myAlertDialog.setNeutralButton("Done", doneClick3);
+							myAlertDialog.setCancelable(false);
+							myAlertDialog.show();
+						}else{
+							new TownPage().show(activity, true);
+						}
 
-						new TownPage().show(activity, true);
 					}
 				});
 
