@@ -20,8 +20,6 @@ public class TownPage implements FramePage {
 
 	@Override
 	public void show(Activity activity, boolean isSaveToRam) {
-		this.activity = activity;
-
 		// 1. GUI
 		this.activity = activity;
 		FrameLayout frame = (FrameLayout) (activity.findViewById(R.id.content_frame));
@@ -30,9 +28,11 @@ public class TownPage implements FramePage {
 		// Show a new screen
 		LayoutInflater.from(activity).inflate(R.layout.frame_town, frame, true);
 
+		MyApp myapp = (MyApp) activity.getApplicationContext();
+		
 		// Save this FramePage into Ram
 		if (isSaveToRam) {
-			((MyApp) activity.getApplicationContext()).getScreenList().add(this);
+			myapp.getScreenList().add(this);
 		}
 		
 		// background sound
@@ -46,9 +46,7 @@ public class TownPage implements FramePage {
 		
 		// Show the Day
 		TextView tv = (TextView) (activity.findViewById(R.id.textView1));
-		MyApp myapp = ((MyApp) activity.getApplicationContext());
-		Player player;
-		player = myapp.getPlayer();
+		Player player = myapp.getPlayer();
 		tv.setText("Day: "+player.getSurvival_day()+"\nHP: "+player.getHp()+"\nATK: "+player.getTotalAtk());
 
 		// battle button
