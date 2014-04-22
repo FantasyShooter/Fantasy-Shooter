@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.fshoot.entity.Player;
@@ -50,7 +49,7 @@ public class TownPage implements FramePage {
 		MyApp myapp = ((MyApp) activity.getApplicationContext());
 		Player player;
 		player = myapp.getPlayer();
-		tv.setText("Day: "+player.getSurvival_day());
+		tv.setText("Day: "+player.getSurvival_day()+"\nHP: "+player.getHp()+"\nATK: "+player.getTotalAtk());
 
 		// battle button
 		Button battle = (Button) (activity.findViewById(R.id.Button1));
@@ -74,14 +73,6 @@ public class TownPage implements FramePage {
 			@Override
 			public void onClick(View v) {
 				 new ShopPage().show((Activity)v.getContext(),true);
-			}
-		});
-		// Score button
-		Button score = (Button) (activity.findViewById(R.id.button4));
-		score.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				new ScorePage().show((Activity)v.getContext(),true);
 			}
 		});
 
